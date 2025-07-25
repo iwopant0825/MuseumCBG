@@ -12,7 +12,7 @@ export default function SeowonPage() {
 
   const questions = [
     {
-      question: "한국의서원이 세계문화유산으로 등재된 해는?",
+      question: "한국의 서원이 세계유산에 등재된 해는?",
       options: ["2017년", "2018년", "2019년", "2020년"],
       correct: 2,
     },

@@ -78,23 +78,23 @@ export default function InteractionUI() {
         <div className="controls-list">
           <div className="control-item">
             <div className="key-group">
-              <kbd style={{ backgroundColor: "rgba(0, 0, 0, 0.082)" }}>W</kbd>
-              <kbd>A</kbd>
-              <kbd>S</kbd>
-              <kbd>D</kbd>
+              <kbd style={{ backgroundColor: "rgba(0, 0, 0, 0.082)", color: "white" }}>W</kbd>
+              <kbd style={{ backgroundColor: "rgba(0, 0, 0, 0.082)", color: "white" }}>A</kbd>
+              <kbd style={{ backgroundColor: "rgba(0, 0, 0, 0.082)", color: "white" }}>S</kbd>
+              <kbd style={{ backgroundColor: "rgba(0, 0, 0, 0.082)", color: "white" }}>D</kbd>
             </div>
             <span>이동</span>
           </div>
           <div className="control-item">
-            <kbd>Space</kbd>
+            <kbd style={{ backgroundColor: "rgba(0, 0, 0, 0.082)", color: "white" }}>Space</kbd>
             <span>점프</span>
           </div>
           <div className="control-item">
-            <span className="material-symbols-outlined mouse-icon">mouse</span>
+            <span style={{ color: "white" }} className="material-symbols-outlined mouse-icon">mouse</span>
             <span>시점 변경</span>
           </div>
           <div className="control-item">
-            <kbd>F</kbd>
+            <kbd style={{ backgroundColor: "rgba(0, 0, 0, 0.082)", color: "white" }}>F</kbd>
             <span>상호작용</span>
           </div>
         </div>
@@ -106,14 +106,16 @@ export default function InteractionUI() {
       {/* 액션 버튼 */}
       <div className="action-panel">
         <button
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.082)", color: "white" }}
           className="reset-button"
           onClick={() => {
             if (confirm("게임을 처음부터 다시 시작하시겠습니까?")) {
               resetGame();
+              window.location.reload();
             }
           }}
         >
-          <span className="material-symbols-outlined">refresh</span>
+          <span  className="material-symbols-outlined">refresh</span>
           게임 리셋
         </button>
       </div>

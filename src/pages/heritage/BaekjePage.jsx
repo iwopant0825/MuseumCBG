@@ -13,7 +13,7 @@ export default function BaekjePage() {
   const questions = [
     {
       question: "백제역사유적지구의 시대적 배경은?",
-      options: ["백제 전기", "백제 후기", "고구려시대", "신라시대"],
+      options: ["백제 전기", "백제 후기(475~660년)", "고구려시대", "신라시대"],
       correct: 1,
     },
     {
@@ -23,12 +23,7 @@ export default function BaekjePage() {
     },
     {
       question: "백제역사유적지구를 구성하는 지역은?",
-      options: [
-        "공주, 부여, 익산",
-        "경주, 공주, 부여",
-        "부여, 익산, 서울",
-        "공주, 익산, 경주",
-      ],
+      options: ["공주, 부여, 익산", "경주, 공주, 부여", "부여, 익산, 서울", "공주, 익산, 경주"],
       correct: 0,
     },
   ];

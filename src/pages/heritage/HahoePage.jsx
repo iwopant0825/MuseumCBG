@@ -12,7 +12,7 @@ export default function HahoePage() {
 
   const questions = [
     {
-      question: "하회와양동이 세계문화유산으로 등재된 해는?",
+      question: "하회와 양동마을이 세계유산에 등재된 해는?",
       options: ["2008년", "2010년", "2012년", "2014년"],
       correct: 1,
     },
@@ -22,7 +22,7 @@ export default function HahoePage() {
       correct: 1,
     },
     {
-      question: "하회마을의 대표적인 무형문화는?",
+      question: "하회마을의 대표 무형문화는?",
       options: ["농악", "탈춤", "사물놀이", "판소리"],
       correct: 1,
     },

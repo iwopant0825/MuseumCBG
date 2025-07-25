@@ -12,17 +12,17 @@ export default function HwaseongPage() {
 
   const questions = [
     {
-      question: "화성이 세계문화유산으로 등재된 해는?",
+      question: "수원화성이 세계유산에 등재된 해는?",
       options: ["1995년", "1997년", "1999년", "2001년"],
       correct: 1,
     },
     {
-      question: "화성을 건설한 왕은?",
+      question: "수원화성을 건설한 왕은?",
       options: ["영조", "정조", "순조", "헌종"],
       correct: 1,
     },
     {
-      question: "화성의 총 길이는?",
+      question: "수원화성의 총 길이는?",
       options: ["4.7km", "5.7km", "6.7km", "7.7km"],
       correct: 1,
     },

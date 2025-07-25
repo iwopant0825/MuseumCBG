@@ -12,7 +12,7 @@ export default function JoseonPage() {
 
   const questions = [
     {
-      question: "조선왕릉이 유네스코 세계문화유산으로 등재된 해는?",
+      question: "조선왕릉이 세계유산에 등재된 해는?",
       options: ["2007년", "2009년", "2011년", "2013년"],
       correct: 1,
     },
@@ -22,7 +22,7 @@ export default function JoseonPage() {
       correct: 1,
     },
     {
-      question: "조선왕릉에서 왕과 왕비가 함께 묻인 릉을 무엇이라 하는가?",
+      question: "왕과 왕비가 함께 묻힌 능은?",
       options: ["단릉", "쌍릉", "합장릉", "동원릉"],
       correct: 2,
     },

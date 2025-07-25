@@ -12,19 +12,16 @@ export default function GyeongjuPage() {
 
   const questions = [
     {
-      id: 1,
       question: "경주역사유적지구가 속했던 고대 왕국은?",
       options: ["고구려", "백제", "신라", "가야"],
       correct: 2,
     },
     {
-      id: 2,
-      question: "불국사와 석굴암이 건립된 시대는?",
+      question: "불국사와 석굴암이 건립된 시기는?",
       options: ["삼국시대", "통일신라시대", "고려시대", "조선시대"],
       correct: 1,
     },
     {
-      id: 3,
       question: "경주가 신라의 수도였던 기간은?",
       options: ["약 500년", "약 700년", "약 1000년", "약 1300년"],
       correct: 2,

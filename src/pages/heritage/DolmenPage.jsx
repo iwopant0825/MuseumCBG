@@ -12,24 +12,16 @@ export default function DolmenPage() {
 
   const questions = [
     {
-      id: 1,
       question: "고인돌이 만들어진 시기는?",
       options: ["구석기시대", "신석기시대", "청동기시대", "철기시대"],
       correct: 2,
     },
     {
-      id: 2,
-      question: "한국 고인돌의 특징으로 맞는 것은?",
-      options: [
-        "세계에서 가장 작다",
-        "세계 최대 규모와 밀집도",
-        "모두 같은 형태를 가진다",
-        "주로 평지에만 위치한다",
-      ],
+      question: "한국 고인돌의 특징은?",
+      options: ["세계에서 가장 작다", "세계 최대 규모와 밀집도", "모두 같은 형태", "주로 평지에만 위치"],
       correct: 1,
     },
     {
-      id: 3,
       question: "고인돌의 주요 용도는?",
       options: ["주거지", "제단", "거대한 무덤", "창고"],
       correct: 2,
