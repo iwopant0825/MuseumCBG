@@ -11,13 +11,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden; /* 스크롤바 숨김 */
   background: #f0f0f0;
 }
 
 #root {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* 선택 비활성화 */

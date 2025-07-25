@@ -1,0 +1,376 @@
+/* Museum UI Styles */
+.museum-ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  color: #1a1a1a;
+  z-index: 1000;
+}
+
+/* 헤더 */
+.museum-header {
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.museum-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 16px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.museum-logo .material-symbols-outlined {
+  font-size: 24px;
+  color: #2c2c2c;
+}
+
+.museum-logo h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+/* 진행 상황 패널 */
+.progress-panel {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  pointer-events: auto;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.progress-header .material-symbols-outlined {
+  font-size: 20px;
+  color: #2c2c2c;
+}
+
+.progress-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.progress-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 12px;
+  font-family: 'Inter', monospace;
+}
+
+.progress-stats .current {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.progress-stats .divider {
+  font-size: 18px;
+  color: #666;
+  margin: 0 2px;
+}
+
+.progress-stats .total {
+  font-size: 16px;
+  color: #666;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #e5e5e5;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1a1a1a 0%, #2c2c2c 100%);
+  transition: width 0.3s ease;
+}
+
+/* 완료 패널 */
+.completion-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  pointer-events: auto;
+}
+
+.completion-panel .material-symbols-outlined {
+  font-size: 48px;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+}
+
+.completion-panel h2 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.completion-panel p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* 상호작용 패널 */
+.interaction-panel {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 20px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+  min-width: 300px;
+  text-align: center;
+}
+
+.heritage-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.heritage-info .material-symbols-outlined {
+  font-size: 18px;
+  color: #2c2c2c;
+}
+
+.heritage-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.interaction-guide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* 조작 안내 패널 */
+.controls-panel {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+  min-width: 200px;
+}
+
+.controls-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.controls-header .material-symbols-outlined {
+  font-size: 18px;
+  color: #2c2c2c;
+}
+
+.controls-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.controls-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.control-item span:last-child {
+  color: #666;
+}
+
+.key-group {
+  display: flex;
+  gap: 4px;
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.mouse-icon {
+  font-size: 18px !important;
+  color: #2c2c2c;
+}
+
+.interaction-hint {
+  margin: 0;
+  font-size: 11px;
+  color: #999;
+  font-style: italic;
+}
+
+/* 액션 패널 */
+.action-panel {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  pointer-events: auto;
+}
+
+.reset-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reset-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.reset-button .material-symbols-outlined {
+  font-size: 16px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .museum-header {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    transform: none;
+  }
+
+  .museum-logo {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+  }
+
+  .museum-logo h1 {
+    font-size: 16px;
+  }
+
+  .progress-panel {
+    top: 80px;
+    right: 16px;
+    left: 16px;
+    min-width: auto;
+  }
+
+  .controls-panel {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    min-width: auto;
+  }
+
+  .action-panel {
+    bottom: 16px;
+    right: 16px;
+    left: auto;
+  }
+
+  .interaction-panel {
+    bottom: 100px;
+    left: 16px;
+    right: 16px;
+    transform: none;
+    min-width: auto;
+  }
+
+  .completion-panel {
+    top: 50%;
+    left: 16px;
+    right: 16px;
+    transform: translateY(-50%);
+    padding: 32px 24px;
+  }
+} 

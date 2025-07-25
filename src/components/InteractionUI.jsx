@@ -1,0 +1,122 @@
+import { useGameStore } from "../store/gameStore";
+import "./InteractionUI.css";
+
+export default function InteractionUI() {
+  const {
+    heritages,
+    currentInteractionCard,
+    showInteractionPrompt,
+    getUnlockedCount,
+    gameCompleted,
+    resetGame,
+  } = useGameStore();
+
+  const currentHeritage = heritages.find(
+    (h) => h.id === currentInteractionCard
+  );
+  const unlockedCount = getUnlockedCount();
+  const totalCount = heritages.length;
+
+  return (
+    <div className="museum-ui">
+      {/* 헤더 */}
+      <div className="museum-header">
+        <div className="museum-logo">
+          <span className="material-symbols-outlined">account_balance</span>
+          <h1>한국 문화유산 박물관</h1>
+        </div>
+      </div>
+
+      {/* 진행 상황 */}
+      <div className="progress-panel">
+        <div className="progress-header">
+          <span className="material-symbols-outlined">explore</span>
+          <h3>탐험 진행도</h3>
+        </div>
+        <div className="progress-stats">
+          <span className="current">{unlockedCount}</span>
+          <span className="divider">/</span>
+          <span className="total">{totalCount}</span>
+        </div>
+        <div className="progress-bar">
+          <div
+            className="progress-fill"
+            style={{ width: `${(unlockedCount / totalCount) * 100}%` }}
+          ></div>
+        </div>
+      </div>
+
+      {/* 게임 완료 메시지 */}
+      {gameCompleted && (
+        <div className="completion-panel">
+          <span className="material-symbols-outlined">emoji_events</span>
+          <h2>탐험 완료</h2>
+          <p>모든 한국 문화유산을 발견하셨습니다</p>
+        </div>
+      )}
+
+      {/* 상호작용 프롬프트 */}
+      {showInteractionPrompt && currentHeritage && (
+        <div className="interaction-panel">
+          <div className="heritage-info">
+            <span className="material-symbols-outlined">location_on</span>
+            <span className="heritage-name">{currentHeritage.name}</span>
+          </div>
+          <div className="interaction-guide">
+            <kbd>F</kbd>
+            <span>키를 눌러 자세히 보기</span>
+          </div>
+        </div>
+      )}
+
+      {/* 조작 안내 */}
+      <div className="controls-panel">
+        <div className="controls-header">
+          <span className="material-symbols-outlined">gamepad</span>
+          <h4>조작 가이드</h4>
+        </div>
+        <div className="controls-list">
+          <div className="control-item">
+            <div className="key-group">
+              <kbd>W</kbd>
+              <kbd>A</kbd>
+              <kbd>S</kbd>
+              <kbd>D</kbd>
+            </div>
+            <span>이동</span>
+          </div>
+          <div className="control-item">
+            <kbd>Space</kbd>
+            <span>점프</span>
+          </div>
+          <div className="control-item">
+            <span className="material-symbols-outlined mouse-icon">mouse</span>
+            <span>시점 변경</span>
+          </div>
+          <div className="control-item">
+            <kbd>F</kbd>
+            <span>상호작용</span>
+          </div>
+        </div>
+        <p className="interaction-hint">
+          화면을 클릭하여 포인터 락을 활성화하세요
+        </p>
+      </div>
+
+      {/* 액션 버튼 */}
+      <div className="action-panel">
+        <button
+          className="reset-button"
+          onClick={() => {
+            if (confirm("게임을 처음부터 다시 시작하시겠습니까?")) {
+              resetGame();
+            }
+          }}
+        >
+          <span className="material-symbols-outlined">refresh</span>
+          게임 리셋
+        </button>
+      </div>
+    </div>
+  );
+}

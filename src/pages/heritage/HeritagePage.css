@@ -1,0 +1,558 @@
+/* Heritage Page Styles - Museum Design */
+.heritage-page {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #fafafa;
+  min-height: 100vh;
+}
+
+/* 네비게이션 */
+.heritage-nav {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0 32px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.heritage-nav h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background: #2c2c2c;
+  transform: translateY(-1px);
+}
+
+/* 헤더 섹션 */
+.heritage-header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  color: #ffffff;
+  padding: 80px 0;
+  position: relative;
+}
+
+.heritage-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.5" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="0.3" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="0.4" fill="white" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.header-text h1 {
+  margin: 0 0 16px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.heritage-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 32px 0;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.heritage-info {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+.header-image {
+  position: relative;
+}
+
+.header-image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* 메인 콘텐츠 */
+.heritage-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 32px;
+}
+
+.heritage-content section {
+  margin-bottom: 80px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 48px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.heritage-content h2 {
+  margin: 0 0 32px 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.heritage-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #1a1a1a;
+}
+
+.heritage-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+  margin: 0;
+}
+
+/* 특징 그리드 */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.feature-card {
+  padding: 32px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 문화적 가치 */
+.significance-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+}
+
+.significance-item {
+  text-align: center;
+  padding: 32px 24px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.significance-item h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.significance-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 퀴즈 트리거 */
+.quiz-trigger {
+  text-align: center;
+  margin: 80px 0;
+}
+
+.quiz-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(26, 26, 26, 0.2);
+}
+
+.quiz-button:hover {
+  background: #2c2c2c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(26, 26, 26, 0.3);
+}
+
+/* 퀴즈 섹션 */
+.quiz-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+  border: 2px solid #1a1a1a !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.quiz-section h2 {
+  color: #1a1a1a;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.quiz-description {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 48px;
+}
+
+.quiz-question {
+  margin-bottom: 40px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+}
+
+.quiz-question h3 {
+  margin: 0 0 24px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 12px;
+}
+
+.quiz-option {
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.quiz-option:hover {
+  background: #e9ecef;
+  border-color: #1a1a1a;
+}
+
+.quiz-option.selected {
+  background: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+.quiz-submit {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.submit-button {
+  padding: 16px 48px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #2c2c2c;
+  transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* 성공 메시지 */
+.quiz-success {
+  text-align: center;
+  padding: 48px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 12px;
+  border: 2px solid #1a1a1a;
+  margin-top: 32px;
+}
+
+.quiz-success h3 {
+  margin: 0 0 16px 0;
+  font-size: 24px;
+  color: #1a1a1a;
+}
+
+.quiz-success p {
+  margin: 0 0 32px 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.return-button {
+  padding: 12px 32px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.return-button:hover {
+  background: #2c2c2c;
+}
+
+/* 푸터 */
+.heritage-footer {
+  background: #1a1a1a;
+  color: #ffffff;
+  text-align: center;
+  padding: 32px;
+  font-size: 14px;
+}
+
+.heritage-footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 헤더 색상 변형 (기존 유지하되 더 세련되게) */
+.gyeongju-header { background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); }
+.dolmen-header { background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%); }
+.namhansanseong-header { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); }
+.bangudae-header { background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%); }
+.baekje-header { background: linear-gradient(135deg, #8e44ad 0%, #a569bd 100%); }
+.sansa-header { background: linear-gradient(135deg, #1e8449 0%, #27ae60 100%); }
+.seowon-header { background: linear-gradient(135deg, #2980b9 0%, #3498db 100%); }
+.seokguram-header { background: linear-gradient(135deg, #d68910 0%, #f39c12 100%); }
+.jeju-header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); }
+.joseon-header { background: linear-gradient(135deg, #a04000 0%, #d68910 100%); }
+.jongmyo-header { background: linear-gradient(135deg, #6c3483 0%, #8e44ad 100%); }
+.changdeokgung-header { background: linear-gradient(135deg, #ad1457 0%, #e91e63 100%); }
+.hahoe-header { background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%); }
+.getbol-header { background: linear-gradient(135deg, #00695c 0%, #26a69a 100%); }
+.haeinsa-header { background: linear-gradient(135deg, #bf360c 0%, #ff5722 100%); }
+.hwaseong-header { background: linear-gradient(135deg, #1565c0 0%, #2196f3 100%); }
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .header-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .heritage-content {
+    padding: 60px 24px;
+  }
+
+  .heritage-content section {
+    padding: 32px 24px;
+    margin-bottom: 60px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+  }
+
+  .significance-content {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heritage-nav {
+    padding: 0 16px;
+    height: 70px;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .heritage-nav h1 {
+    font-size: 16px;
+    order: -1;
+  }
+
+  .back-button {
+    align-self: flex-start;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .heritage-header {
+    padding: 60px 0;
+  }
+
+  .header-content {
+    padding: 0 16px;
+    gap: 32px;
+  }
+
+  .header-text h1 {
+    font-size: 36px;
+  }
+
+  .heritage-subtitle {
+    font-size: 16px;
+  }
+
+  .heritage-info {
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .info-item {
+    font-size: 13px;
+    padding: 6px 12px;
+    justify-content: center;
+  }
+
+  .heritage-content {
+    padding: 40px 16px;
+  }
+
+  .heritage-content section {
+    padding: 24px 20px;
+    margin-bottom: 40px;
+  }
+
+  .heritage-content h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .significance-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-card,
+  .significance-item {
+    padding: 24px 20px;
+  }
+
+  .quiz-section {
+    padding: 32px 20px !important;
+  }
+
+  .quiz-question {
+    padding: 24px 20px;
+  }
+
+  .quiz-options {
+    gap: 10px;
+  }
+
+  .quiz-option {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .quiz-success {
+    padding: 32px 24px;
+  }
+} 

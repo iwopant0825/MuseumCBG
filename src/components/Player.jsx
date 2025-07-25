@@ -2,23 +2,38 @@ import { RigidBody, CapsuleCollider } from "@react-three/rapier";
 import { useRef, useEffect, useState } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Vector3, Euler } from "three";
+import { useGameStore } from "../store/gameStore";
+import { useNavigate } from "react-router-dom";
 
 export function Player() {
   const { camera } = useThree();
   const playerRef = useRef();
   const cameraRotation = useRef(new Euler(0, 0, 0, "YXZ"));
+  const navigate = useNavigate();
+
+  // 게임 상태
+  const {
+    heritages,
+    setCurrentInteractionCard,
+    setShowInteractionPrompt,
+    currentInteractionCard,
+  } = useGameStore();
+
   const [keys, setKeys] = useState({
     w: false,
     a: false,
     s: false,
     d: false,
     space: false,
+    f: false,
   });
+
   // 걷기 화면 흔들림(bob) 관련 상태
   const walkTime = useRef(0);
 
   const moveSpeed = 8; // 속도 증가
   const jumpForce = 6; // 점프력 감소 (더 낮은 점프)
+  const interactionDistance = 3; // 상호작용 거리
 
   // 카메라 초기 설정
   useEffect(() => {
@@ -50,6 +65,10 @@ export function Player() {
           event.preventDefault();
           setKeys((prev) => ({ ...prev, space: true }));
           break;
+        case "KeyF":
+          event.preventDefault();
+          setKeys((prev) => ({ ...prev, f: true }));
+          break;
       }
     };
 
@@ -70,6 +89,9 @@ export function Player() {
         case "Space":
           setKeys((prev) => ({ ...prev, space: false }));
           break;
+        case "KeyF":
+          setKeys((prev) => ({ ...prev, f: false }));
+          break;
       }
     };
 
@@ -82,7 +104,18 @@ export function Player() {
     };
   }, []);
 
-  // 마우스 컨트롤
+  // F키 상호작용 처리
+  useEffect(() => {
+    if (keys.f && currentInteractionCard) {
+      const heritage = heritages.find((h) => h.id === currentInteractionCard);
+      if (heritage && heritage.unlocked) {
+        navigate(`/heritage/${heritage.id}`);
+      }
+      setKeys((prev) => ({ ...prev, f: false })); // F키 상태 리셋
+    }
+  }, [keys.f, currentInteractionCard, heritages, navigate]);
+
+  // 마우스 컨트롤 설정
   useEffect(() => {
     const canvas = document.querySelector("canvas");
 
@@ -94,7 +127,6 @@ export function Player() {
       if (document.pointerLockElement === canvas) {
         const { movementX, movementY } = event;
 
-        // 독립적인 카메라 회전 관리
         cameraRotation.current.y -= movementX * 0.002;
         cameraRotation.current.x -= movementY * 0.002;
 
@@ -103,12 +135,6 @@ export function Player() {
           -Math.PI / 2,
           Math.min(Math.PI / 2, cameraRotation.current.x)
         );
-
-        // Z축 회전 강제로 0으로 고정 (기울어짐 방지)
-        cameraRotation.current.z = 0;
-
-        // 카메라에 회전 적용 (즉시 반영)
-        camera.rotation.copy(cameraRotation.current);
       }
     };
 
@@ -120,6 +146,24 @@ export function Player() {
       document.removeEventListener("mousemove", handleMouseMove);
     };
   }, [camera]);
+
+  // 가장 가까운 카드 찾기 함수
+  const findNearestCard = (playerPosition) => {
+    let nearestCard = null;
+    let nearestDistance = interactionDistance;
+
+    heritages.forEach((heritage) => {
+      const cardPosition = new Vector3(...heritage.position);
+      const distance = playerPosition.distanceTo(cardPosition);
+
+      if (distance < nearestDistance && heritage.unlocked) {
+        nearestDistance = distance;
+        nearestCard = heritage.id;
+      }
+    });
+
+    return nearestCard;
+  };
 
   useFrame((_, delta) => {
     if (!playerRef.current) {
@@ -216,6 +260,19 @@ export function Player() {
     camera.rotation.z = 0;
     camera.up.set(0, 1, 0);
     camera.quaternion.normalize();
+
+    // 상호작용 가능한 카드 찾기
+    const playerPos = new Vector3(
+      playerPosition.x,
+      playerPosition.y,
+      playerPosition.z
+    );
+    const nearestCard = findNearestCard(playerPos);
+
+    if (nearestCard !== currentInteractionCard) {
+      setCurrentInteractionCard(nearestCard);
+      setShowInteractionPrompt(nearestCard !== null);
+    }
   });
 
   return (
