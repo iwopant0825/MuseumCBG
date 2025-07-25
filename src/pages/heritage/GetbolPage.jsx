@@ -181,16 +181,15 @@ export default function GetbolPage() {
               </p>
             </div>
             <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">eco</span>
-                기후 조절
-              </h3>
+              <h3><span className="material-symbols-outlined">eco</span>기후 조절</h3>
               <p>
                 탄소 저장과 기후 조절 기능을 통해 지구 환경 보전에 기여합니다.
               </p>
             </div>
           </div>
         </section>
+
+        
 
         {/* 퀴즈 유도 버튼 */}
         {!showQuiz && (
@@ -249,8 +248,8 @@ export default function GetbolPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

@@ -139,7 +139,7 @@ export default function NamhansanseongPage() {
             </div>
             <div className="significance-item">
               <h3>📚 역사적 의미</h3>
-              <p>정유재란과 정묘정란 등 중요한 역사적 사건들의 무대였습니다.</p>
+              <p>병자호란 당시 국왕이 피난하여 항전한 장소로서 중요한 역사적 의미를 가집니다.</p>
             </div>
             <div className="significance-item">
               <h3>🌿 자연과 조화</h3>
@@ -147,6 +147,8 @@ export default function NamhansanseongPage() {
             </div>
           </div>
         </section>
+
+        
 
         {!showQuiz && (
           <div className="quiz-trigger">
@@ -202,8 +204,8 @@ export default function NamhansanseongPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>🎉 축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

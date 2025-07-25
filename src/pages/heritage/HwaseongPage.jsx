@@ -180,16 +180,15 @@ export default function HwaseongPage() {
               </p>
             </div>
             <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">castle</span>
-                건축 기술
-              </h3>
+              <h3><span className="material-symbols-outlined">castle</span>건축 기술</h3>
               <p>
                 조선 후기 건축 기술의 정점을 보여주는 성곽 건축의 걸작입니다.
               </p>
             </div>
           </div>
         </section>
+
+        
 
         {!showQuiz && (
           <div className="quiz-trigger">
@@ -246,8 +245,8 @@ export default function HwaseongPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

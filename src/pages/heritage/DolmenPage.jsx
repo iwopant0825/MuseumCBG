@@ -118,7 +118,7 @@ export default function DolmenPage() {
             </div>
             <div className="feature-card">
               <h3>강화 고인돌유적</h3>
-              <p>인천 강화군에 위치하며 120여 기의 고인돌과 지석묘군</p>
+              <p>인천 강화군에 위치하며 120여 기의 고인돌과 고인돌군</p>
             </div>
           </div>
         </section>
@@ -155,6 +155,8 @@ export default function DolmenPage() {
             </div>
           </div>
         </section>
+
+        
 
         {!showQuiz && (
           <div className="quiz-trigger">
@@ -210,8 +212,8 @@ export default function DolmenPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>🎉 축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

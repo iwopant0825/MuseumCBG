@@ -18,6 +18,9 @@
   left: 50%;
   transform: translateX(-50%);
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .museum-logo {
@@ -43,6 +46,18 @@
   font-weight: 600;
   color: #1a1a1a;
   letter-spacing: -0.02em;
+}
+
+.museum-description {
+  margin-top: 12px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.museum-description p {
+  margin: 4px 0;
 }
 
 /* 진행 상황 패널 */

@@ -225,10 +225,7 @@ export default function GayaPage() {
               </p>
             </div>
             <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">architecture</span>
-                독특한 고분 구조
-              </h3>
+              <h3><span className="material-symbols-outlined">architecture</span>독특한 고분 구조</h3>
               <p>
                 수혈식 석곽묘와 횡혈식 석실묘 등 다양한 고분 구조를
                 발전시켰습니다.
@@ -236,6 +233,8 @@ export default function GayaPage() {
             </div>
           </div>
         </section>
+
+        
 
         {/* 퀴즈 유도 버튼 */}
         {!showQuiz && (
@@ -294,8 +293,8 @@ export default function GayaPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

@@ -147,6 +147,8 @@ export default function JongmyoPage() {
           </div>
         </section>
 
+        
+
         {!showQuiz && (
           <div className="quiz-trigger">
             <button onClick={scrollToQuiz} className="quiz-button">
@@ -201,8 +203,8 @@ export default function JongmyoPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>🎉 축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

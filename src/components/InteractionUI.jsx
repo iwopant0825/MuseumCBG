@@ -25,6 +25,12 @@ export default function InteractionUI() {
           <span style={{ color: "white" }} className="material-symbols-outlined">account_balance</span>
           <h1 style={{ color: "white" }}>한국 문화유산 박물관</h1>
         </div>
+        <div className="museum-description">
+          <p>이곳은 한국의 아름다운 유네스코 문화유산을 둘러볼 수 있는 가상 박물관입니다.</p>
+          <p>자유롭게 이동하며 전시물을 감상하고, F키를 눌러 문화유산에 대한 설명을 확인해보세요.</p>
+          <p><strong>문화 유산을 발견하면 퀴즈를 풀어 다음 문화 유산을 해금해보세요.</strong></p>
+          <strong>모든 문화 유산을 해금하면 게임이 완료됩니다.</strong>
+        </div>
       </div>
 
       {/* 진행 상황 */}
@@ -49,8 +55,7 @@ export default function InteractionUI() {
       {/* 게임 완료 메시지 */}
       {gameCompleted && (
         <div className="completion-panel">
-          <span className="material-symbols-outlined">emoji_events</span>
-          <h2>탐험 완료</h2>
+          <h2><span className="material-symbols-outlined">emoji_events</span> 탐험 완료</h2>
           <p>모든 한국 문화유산을 발견하셨습니다</p>
         </div>
       )}
@@ -90,7 +95,7 @@ export default function InteractionUI() {
             <span>점프</span>
           </div>
           <div className="control-item">
-            <span style={{ color: "white" }} className="material-symbols-outlined mouse-icon">mouse</span>
+            <span style={{ color: "white" }}   className="material-symbols-outlined mouse-icon">mouse</span>
             <span>시점 변경</span>
           </div>
           <div className="control-item">
@@ -106,7 +111,6 @@ export default function InteractionUI() {
       {/* 액션 버튼 */}
       <div className="action-panel">
         <button
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.082)", color: "white" }}
           className="reset-button"
           onClick={() => {
             if (confirm("게임을 처음부터 다시 시작하시겠습니까?")) {
@@ -115,7 +119,7 @@ export default function InteractionUI() {
             }
           }}
         >
-          <span  className="material-symbols-outlined">refresh</span>
+          <span className="material-symbols-outlined">refresh</span>
           게임 리셋
         </button>
       </div>

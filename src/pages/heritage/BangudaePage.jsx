@@ -17,12 +17,12 @@ export default function BangudaePage() {
       correct: 1,
     },
     {
-      question: "반구천 암각화의 대표적인 그림은?",
+      question: "반구천 암각화의 가장 특징적인 그림은?",
       options: ["호랑이", "고래", "말", "새"],
       correct: 1,
     },
     {
-      question: "반구천 암각화의 특징은?",
+      question: "반구천 암각화의 주된 내용은?",
       options: [
         "모두 추상적",
         "주로 식물 그림",
@@ -89,7 +89,7 @@ export default function BangudaePage() {
                 <span className="material-symbols-outlined">
                   calendar_today
                 </span>
-                등재년도: 2025년
+                등재년도: 2024년 (등재 신청)
               </span>
               <span className="info-item">
                 <span className="material-symbols-outlined">
@@ -113,7 +113,7 @@ export default function BangudaePage() {
         <section className="description-section">
           <h2>개요</h2>
           <p>
-            반구대 암각화는 신석기시대부터 청동기시대에 이르는 선사시대 바위그림으로, 고래, 바다동물, 육지동물 등 300여 점의 그림이 새겨져 있습니다. 선사시대 인류의 생활과 신앙을 보여주는 귀중한 문화유산으로, 현재 유네스코 세계유산 등재를 추진 중입니다.
+            반구대 암각화는 신석기시대부터 청동기시대에 이르는 선사시대 바위그림으로, 고래, 바다동물, 육지동물 등 300여 점의 그림이 새겨져 있습니다. 선사시대 인류의 생활과 신앙을 보여주는 귀중한 문화유산으로, 2024년 7월 유네스코 세계유산에 등재되었습니다.
           </p>
         </section>
 
@@ -160,6 +160,8 @@ export default function BangudaePage() {
             </div>
           </div>
         </section>
+
+        
 
         {!showQuiz && (
           <div className="quiz-trigger">
@@ -215,8 +217,8 @@ export default function BangudaePage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>🎉 축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

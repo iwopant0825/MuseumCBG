@@ -22,8 +22,8 @@ export default function HaeinsaPage() {
       correct: 1,
     },
     {
-      question: "해인사가 위치한 곳은?",
-      options: ["경상북도", "경상남도", "전라남도", "충청남도"],
+      question: "해인사가 위치한 산은?",
+      options: ["지리산", "가야산", "설악산", "한라산"],
       correct: 1,
     },
   ];
@@ -185,16 +185,15 @@ export default function HaeinsaPage() {
               </p>
             </div>
             <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">history</span>
-                역사적 의미
-              </h3>
+              <h3><span className="material-symbols-outlined">history</span>역사적 의미</h3>
               <p>
                 몽골 침입기 국난 극복 의지가 담긴 민족 문화의 상징적 유산입니다.
               </p>
             </div>
           </div>
         </section>
+
+        
 
         {/* 퀴즈 유도 버튼 */}
         {!showQuiz && (
@@ -253,8 +252,8 @@ export default function HaeinsaPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

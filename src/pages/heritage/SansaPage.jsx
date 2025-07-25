@@ -169,16 +169,15 @@ export default function SansaPage() {
               <p>한국 전통 목조 건축의 우수성과 아름다움을 보여줍니다.</p>
             </div>
             <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">school</span>
-                수행 전통
-              </h3>
+              <h3><span className="material-symbols-outlined">school</span>수행 전통</h3>
               <p>
                 불교 수행과 교육의 전통이 현재까지 이어지는 살아있는 유산입니다.
               </p>
             </div>
           </div>
         </section>
+
+        
 
         {!showQuiz && (
           <div className="quiz-trigger">
@@ -235,8 +234,8 @@ export default function SansaPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

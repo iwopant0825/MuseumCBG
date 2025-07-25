@@ -127,19 +127,19 @@ export default function BaekjePage() {
           <h2>문화적 가치</h2>
           <div className="significance-content">
             <div className="significance-item">
-              <h3>👑 왕국 문화</h3>
+              <h3><span className="material-symbols-outlined">fort</span> 왕국 문화</h3>
               <p>백제 후기 왕국 문화의 정수를 보여줍니다.</p>
             </div>
             <div className="significance-item">
-              <h3>🏛️ 도시 계획</h3>
+              <h3><span className="material-symbols-outlined">location_city</span> 도시 계획</h3>
               <p>고대 도시 계획과 건축 기술의 발전상을 알 수 있습니다.</p>
             </div>
             <div className="significance-item">
-              <h3>🌏 국제 교류</h3>
+              <h3><span className="material-symbols-outlined">public</span> 국제 교류</h3>
               <p>중국, 일본과의 활발한 문화 교류를 보여줍니다.</p>
             </div>
             <div className="significance-item">
-              <h3>🏺 예술 문화</h3>
+              <h3><span className="material-symbols-outlined">palette</span> 예술 문화</h3>
               <p>백제 특유의 우아하고 세련된 예술 문화를 엿볼 수 있습니다.</p>
             </div>
           </div>
@@ -199,8 +199,8 @@ export default function BaekjePage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>🎉 축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

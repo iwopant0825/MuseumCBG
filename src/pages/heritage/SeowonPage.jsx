@@ -181,16 +181,15 @@ export default function SeowonPage() {
               <p>자연환경과 조화된 배치로 성리학적 이상향을 구현했습니다.</p>
             </div>
             <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">diversity_3</span>
-                지역 문화
-              </h3>
+              <h3><span className="material-symbols-outlined">groups</span>지역 문화</h3>
               <p>
                 각 지역의 특색을 반영하면서도 공통된 서원 문화를 보여줍니다.
               </p>
             </div>
           </div>
         </section>
+
+        
 
         {!showQuiz && (
           <div className="quiz-trigger">
@@ -247,8 +246,8 @@ export default function SeowonPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

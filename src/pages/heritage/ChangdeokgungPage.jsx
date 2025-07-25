@@ -185,16 +185,15 @@ export default function ChangdeokgungPage() {
               </p>
             </div>
             <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">history_edu</span>
-                역사적 의미
-              </h3>
+              <h3><span className="material-symbols-outlined">history_edu</span>역사적 의미</h3>
               <p>
                 조선 왕조 500년 역사의 중심지로서 한국사의 중요한 무대였습니다.
               </p>
             </div>
           </div>
         </section>
+
+        
 
         {/* 퀴즈 유도 버튼 */}
         {!showQuiz && (
@@ -253,8 +252,8 @@ export default function ChangdeokgungPage() {
             </div>
 
             {quizCompleted && (
-              <div className="quiz-success">
-                <h3>축하합니다!</h3>
+              <div id="quiz-success" className="quiz-success">
+                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기
