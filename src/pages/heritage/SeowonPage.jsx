@@ -5,7 +5,7 @@ import "./HeritagePage.css";
 
 export default function SeowonPage() {
   const navigate = useNavigate();
-  const { unlockHeritage, getNextHeritageToUnlock } = useGameStore();
+  const { markQuizAsSolved } = useGameStore();
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
@@ -44,13 +44,10 @@ export default function SeowonPage() {
     });
 
     if (correctCount === questions.length) {
-      const nextHeritage = getNextHeritageToUnlock();
-      if (nextHeritage) {
-        unlockHeritage(nextHeritage.id);
-      }
+      markQuizAsSolved("seowon");
       setQuizCompleted(true);
     } else {
-      alert("모든 문제를 맞춰야 합니다. 다시 시도해주세요.");
+      alert("아쉽지만 모든 문제를 맞춰야 합니다. 다시 시도해주세요.");
     }
   };
 
@@ -216,7 +213,7 @@ export default function SeowonPage() {
                 <div className="quiz-options">
                   {question.options.map((option, optionIndex) => (
                     <button
-                      key={optionIndex}
+                      key={`${questionIndex}-${optionIndex}`}
                       className={`quiz-option ${
                         selectedAnswers[questionIndex] === optionIndex
                           ? "selected"

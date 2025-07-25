@@ -128,10 +128,11 @@ export const heritageData = [
 export const useGameStore = create(
   persist(
     (set, get) => ({
-      // 게임 상태 - 첫 번째만 해금된 상태로 초기화
+      // 게임 상태 초기화
       heritages: heritageData.map((h, index) => ({
         ...h,
-        unlocked: index === 0,
+        unlocked: index === 0, // 첫 번째 유산만 초기에 해금
+        quizSolved: false, // 퀴즈 해결 상태 추가
       })),
       currentInteractionCard: null,
       showInteractionPrompt: false,
@@ -145,14 +146,7 @@ export const useGameStore = create(
               ? { ...heritage, unlocked: true }
               : heritage
           );
-
-          // 모든 카드가 해금되었는지 확인
-          const allUnlocked = updatedHeritages.every((h) => h.unlocked);
-
-          return {
-            heritages: updatedHeritages,
-            gameCompleted: allUnlocked,
-          };
+          return { heritages: updatedHeritages };
         });
       },
 
@@ -168,7 +162,8 @@ export const useGameStore = create(
         set({
           heritages: heritageData.map((h, index) => ({
             ...h,
-            unlocked: index === 0, // 첫 번째 카드만 해금
+            unlocked: index === 0,
+            quizSolved: false,
           })),
           currentInteractionCard: null,
           showInteractionPrompt: false,
@@ -176,13 +171,34 @@ export const useGameStore = create(
         });
       },
 
-      // 헬퍼 함수들
-      getUnlockedCount: () => {
-        return get().heritages.filter((h) => h.unlocked).length;
+      // 퀴즈 해결 처리
+      markQuizAsSolved: (heritageId) => {
+        set((state) => {
+          let allQuizzesSolved = false;
+          const updatedHeritages = state.heritages.map((h) =>
+            h.id === heritageId ? { ...h, quizSolved: true } : h
+          );
+
+          const nextHeritage = state.heritages.find((h) => !h.unlocked);
+          if (nextHeritage) {
+            updatedHeritages.find(
+              (h) => h.id === nextHeritage.id
+            ).unlocked = true;
+          } else {
+            // 모든 유산이 해금된 경우
+            allQuizzesSolved = updatedHeritages.every((h) => h.quizSolved);
+          }
+
+          return {
+            heritages: updatedHeritages,
+            gameCompleted: allQuizzesSolved,
+          };
+        });
       },
 
-      getNextHeritageToUnlock: () => {
-        return get().heritages.find((h) => !h.unlocked);
+      // 헬퍼 함수
+      getSolvedQuizCount: () => {
+        return get().heritages.filter((h) => h.quizSolved).length;
       },
 
       isHeritageUnlocked: (heritageId) => {
@@ -192,7 +208,7 @@ export const useGameStore = create(
     }),
     {
       name: "heritage-game-storage",
-      version: 2, // 버전 증가로 기존 저장 데이터 초기화
+      version: 4, // 데이터 구조 변경에 따른 버전 업데이트
     }
   )
 );

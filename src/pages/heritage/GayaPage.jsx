@@ -5,8 +5,7 @@ import "./HeritagePage.css";
 
 export default function GayaPage() {
   const navigate = useNavigate();
-  const { unlockHeritage, getNextHeritageToUnlock } = useGameStore();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const { markQuizAsSolved } = useGameStore();
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
@@ -45,14 +44,11 @@ export default function GayaPage() {
     });
 
     if (correctCount === questions.length) {
-      const nextHeritage = getNextHeritageToUnlock();
-      if (nextHeritage) {
-        unlockHeritage(nextHeritage.id);
-      }
+      markQuizAsSolved("gaya");
       setQuizCompleted(true);
     } else {
       alert(
-        `정답: ${correctCount}/${questions.length}\n모든 문제를 맞춰야 다음 카드를 해금할 수 있습니다.`
+        `아쉽지만 ${correctCount}개 맞췄습니다. 모든 문제를 맞춰야 다음 카드를 해금할 수 있습니다.`
       );
     }
   };
@@ -194,43 +190,20 @@ export default function GayaPage() {
         <section className="significance-section">
           <h2>문화적 가치</h2>
           <div className="significance-content">
-            <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">vase</span>
-                독특한 토기 문화
-              </h3>
-              <p>
-                가야 특유의 회청색 경질토기와 장경호 등 독특한 토기 문화를
-                발전시켰습니다.
-              </p>
-            </div>
-            <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">construction</span>
-                뛰어난 철기 기술
-              </h3>
-              <p>
-                동아시아 최고 수준의 철기 제작 기술을 보유하여 주변국과 활발한
-                교역을 전개했습니다.
-              </p>
-            </div>
-            <div className="significance-item">
-              <h3>
-                <span className="material-symbols-outlined">public</span>
-                국제적 교류
-              </h3>
-              <p>
-                중국, 일본과의 활발한 교류를 통해 동아시아 문화 발전에
-                기여했습니다.
-              </p>
-            </div>
-            <div className="significance-item">
-              <h3><span className="material-symbols-outlined">architecture</span>독특한 고분 구조</h3>
-              <p>
-                수혈식 석곽묘와 횡혈식 석실묘 등 다양한 고분 구조를
-                발전시켰습니다.
-              </p>
-            </div>
+            {[
+              { icon: "vase", title: "독특한 토기 문화", text: "가야 특유의 회청색 경질토기와 장경호 등 독특한 토기 문화를 발전시켰습니다." },
+              { icon: "construction", title: "뛰어난 철기 기술", text: "동아시아 최고 수준의 철기 제작 기술을 보유하여 주변국과 활발한 교역을 전개했습니다." },
+              { icon: "public", title: "국제적 교류", text: "중국, 일본과의 활발한 교류를 통해 동아시아 문화 발전에 기여했습니다." },
+              { icon: "architecture", title: "독특한 고분 구조", text: "수혈식 석곽묘와 횡혈식 석실묘 등 다양한 고분 구조를 발전시켰습니다." },
+            ].map((item, index) => (
+              <div key={index} className="significance-item">
+                <h3>
+                  <span className="material-symbols-outlined">{item.icon}</span>
+                  {item.title}
+                </h3>
+                <p>{item.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -256,7 +229,7 @@ export default function GayaPage() {
             </p>
 
             {questions.map((question, questionIndex) => (
-              <div key={question.id} className="quiz-question">
+              <div key={questionIndex} className="quiz-question">
                 <h3>
                   Q{questionIndex + 1}. {question.question}
                 </h3>

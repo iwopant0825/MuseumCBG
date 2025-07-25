@@ -138,7 +138,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.95);
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
   padding: 40px;
@@ -146,6 +146,14 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
   text-align: center;
+  pointer-events: auto;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.completion-panel.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
   pointer-events: auto;
 }
 
@@ -173,7 +181,7 @@
   position: absolute;
   bottom: 120px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(20px);
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   padding: 20px 24px;
@@ -183,6 +191,13 @@
   pointer-events: auto;
   min-width: 300px;
   text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.interaction-panel.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .heritage-info {

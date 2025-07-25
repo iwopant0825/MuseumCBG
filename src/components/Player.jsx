@@ -156,7 +156,7 @@ export function Player() {
       const cardPosition = new Vector3(...heritage.position);
       const distance = playerPosition.distanceTo(cardPosition);
 
-      if (distance < nearestDistance && heritage.unlocked) {
+      if (distance < nearestDistance) {
         nearestDistance = distance;
         nearestCard = heritage.id;
       }
@@ -278,7 +278,7 @@ export function Player() {
   return (
     <RigidBody
       ref={playerRef}
-      position={[-35, 7, 1]} // 박물관 중심에서 시작
+      position={[-48, 7, 1]} // 박물관 중심에서 시작
       enabledRotations={[false, false, false]} // 모든 회전 비활성화
       type="dynamic"
       mass={1}

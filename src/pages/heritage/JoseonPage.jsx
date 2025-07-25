@@ -5,7 +5,7 @@ import "./HeritagePage.css";
 
 export default function JoseonPage() {
   const navigate = useNavigate();
-  const { unlockHeritage, getNextHeritageToUnlock } = useGameStore();
+  const { markQuizAsSolved } = useGameStore();
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
@@ -44,14 +44,11 @@ export default function JoseonPage() {
     });
 
     if (correctCount === questions.length) {
-      const nextHeritage = getNextHeritageToUnlock();
-      if (nextHeritage) {
-        unlockHeritage(nextHeritage.id);
-      }
+      markQuizAsSolved("joseon");
       setQuizCompleted(true);
     } else {
       alert(
-        `정답: ${correctCount}/${questions.length}\n모든 문제를 맞춰야 다음 카드를 해금할 수 있습니다.`
+        `아쉽지만 ${correctCount}개 맞췄습니다. 모든 문제를 맞춰야 다음 카드를 해금할 수 있습니다.`
       );
     }
   };
@@ -195,7 +192,7 @@ export default function JoseonPage() {
                 <div className="quiz-options">
                   {question.options.map((option, optionIndex) => (
                     <button
-                      key={optionIndex}
+                      key={`${questionIndex}-${optionIndex}`}
                       className={`quiz-option ${
                         selectedAnswers[questionIndex] === optionIndex
                           ? "selected"

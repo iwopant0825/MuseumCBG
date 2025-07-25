@@ -1,6 +1,5 @@
 import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
-import { useRef, useEffect } from "react";
 
 export default function ShowCaseGlb(props) {
   const { position = [0, 0, 0] } = props;

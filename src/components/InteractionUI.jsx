@@ -6,7 +6,7 @@ export default function InteractionUI() {
     heritages,
     currentInteractionCard,
     showInteractionPrompt,
-    getUnlockedCount,
+    getSolvedQuizCount, // 변경
     gameCompleted,
     resetGame,
   } = useGameStore();
@@ -14,7 +14,7 @@ export default function InteractionUI() {
   const currentHeritage = heritages.find(
     (h) => h.id === currentInteractionCard
   );
-  const unlockedCount = getUnlockedCount();
+  const solvedQuizCount = getSolvedQuizCount(); // 변경
   const totalCount = heritages.length;
 
   return (
@@ -40,39 +40,51 @@ export default function InteractionUI() {
           <h3>탐험 진행도</h3>
         </div>
         <div className="progress-stats">
-          <span className="current">{unlockedCount}</span>
+          <span className="current">{solvedQuizCount}</span>
           <span className="divider">/</span>
           <span className="total">{totalCount}</span>
         </div>
         <div className="progress-bar">
           <div
             className="progress-fill"
-            style={{ width: `${(unlockedCount / totalCount) * 100}%` }}
+            style={{ width: `${(solvedQuizCount / totalCount) * 100}%` }}
           ></div>
         </div>
       </div>
 
       {/* 게임 완료 메시지 */}
       {gameCompleted && (
-        <div className="completion-panel">
-          <h2><span className="material-symbols-outlined">emoji_events</span> 탐험 완료</h2>
+        <div className={`completion-panel ${gameCompleted ? "visible" : ""}`}>
+          <span className="material-symbols-outlined">emoji_events</span>
+          <h2>탐험 완료</h2>
           <p>모든 한국 문화유산을 발견하셨습니다</p>
         </div>
       )}
 
       {/* 상호작용 프롬프트 */}
-      {showInteractionPrompt && currentHeritage && (
-        <div className="interaction-panel">
-          <div className="heritage-info">
-            <span className="material-symbols-outlined">location_on</span>
-            <span className="heritage-name">{currentHeritage.name}</span>
-          </div>
-          <div className="interaction-guide">
-            <kbd>F</kbd>
-            <span>키를 눌러 자세히 보기</span>
-          </div>
-        </div>
-      )}
+      <div
+        className={`interaction-panel ${showInteractionPrompt && currentHeritage ? "visible" : ""}`}>
+        {currentHeritage && (
+          <>
+            <div className="heritage-info">
+              <span className="material-symbols-outlined">location_on</span>
+              <span className="heritage-name">
+                {currentHeritage.unlocked ? currentHeritage.name : "???"}
+              </span>
+            </div>
+            <div className="interaction-guide">
+              {currentHeritage.unlocked ? (
+                <>
+                  <kbd>F</kbd>
+                  <span>키를 눌러 자세히 보기</span>
+                </>
+              ) : (
+                <span>잠금 해제되지 않은 문화유산입니다.</span>
+              )}
+            </div>
+          </>
+        )}
+      </div>
 
       {/* 조작 안내 */}
       <div className="controls-panel">
@@ -113,10 +125,8 @@ export default function InteractionUI() {
         <button
           className="reset-button"
           onClick={() => {
-            if (confirm("게임을 처음부터 다시 시작하시겠습니까?")) {
-              resetGame();
-              window.location.reload();
-            }
+            resetGame();
+            window.location.reload();
           }}
         >
           <span className="material-symbols-outlined">refresh</span>

@@ -5,7 +5,7 @@ import "./HeritagePage.css";
 
 export default function BangudaePage() {
   const navigate = useNavigate();
-  const { unlockHeritage, getNextHeritageToUnlock } = useGameStore();
+  const { markQuizAsSolved } = useGameStore();
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
@@ -49,14 +49,11 @@ export default function BangudaePage() {
     });
 
     if (correctCount === questions.length) {
-      const nextHeritage = getNextHeritageToUnlock();
-      if (nextHeritage) {
-        unlockHeritage(nextHeritage.id);
-      }
+      markQuizAsSolved("bangudae");
       setQuizCompleted(true);
     } else {
       alert(
-        `정답: ${correctCount}/${questions.length}\n모든 문제를 맞춰야 다음 카드를 해금할 수 있습니다.`
+        `아쉽지만 ${correctCount}개 맞췄습니다. 모든 문제를 맞춰야 다음 카드를 해금할 수 있습니다.`
       );
     }
   };
@@ -113,7 +110,7 @@ export default function BangudaePage() {
         <section className="description-section">
           <h2>개요</h2>
           <p>
-            반구대 암각화는 신석기시대부터 청동기시대에 이르는 선사시대 바위그림으로, 고래, 바다동물, 육지동물 등 300여 점의 그림이 새겨져 있습니다. 선사시대 인류의 생활과 신앙을 보여주는 귀중한 문화유산으로, 2024년 7월 유네스코 세계유산에 등재되었습니다.
+            반구대 암각화는 신석기시대부터 청동기시대에 이르는 선사시대 바위그림으로, 고래, 바다동물, 육지동물 등 353점의 그림이 새겨져 있습니다. 선사시대 인류의 생활과 신앙을 보여주는 귀중한 문화유산으로, 2025년 7월 유네스코 세계유산으로 등재될 예정입니다.
           </p>
         </section>
 
@@ -187,7 +184,7 @@ export default function BangudaePage() {
                 <div className="quiz-options">
                   {question.options.map((option, optionIndex) => (
                     <button
-                      key={optionIndex}
+                      key={`${questionIndex}-${optionIndex}`}
                       className={`quiz-option ${
                         selectedAnswers[questionIndex] === optionIndex
                           ? "selected"

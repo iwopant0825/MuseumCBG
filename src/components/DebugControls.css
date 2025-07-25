@@ -1,0 +1,24 @@
+.debug-controls-container {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1001;
+  display: flex;
+  gap: 8px;
+}
+
+.debug-button {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.debug-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
