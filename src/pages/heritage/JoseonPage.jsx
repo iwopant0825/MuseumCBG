@@ -117,22 +117,18 @@ export default function JoseonPage() {
         <section className="features-section">
           <h2>주요 특징</h2>
           <div className="features-grid">
-            <div className="feature-card">
-              <h3>릉역 구성</h3>
-              <p>진입로, 제향공간, 능침공간의 3단계로 구성된 신성한 공간</p>
-            </div>
-            <div className="feature-card">
-              <h3>석물 조각</h3>
-              <p>문무석인, 석수, 망주석 등 정교한 석조 조각품들</p>
-            </div>
-            <div className="feature-card">
-              <h3>자연과 조화</h3>
-              <p>풍수지리와 유교 사상에 따른 자연 친화적 배치</p>
-            </div>
-            <div className="feature-card">
-              <h3>제례 전통</h3>
-              <p>500년 이상 이어진 종묘제례와 제향 의식의 연속성</p>
-            </div>
+            {[
+              { title: "풍수지리 사상", text: "조선왕릉은 풍수지리 사상에 입각하여 명당을 선정하고, 도성 100리 이내에 조성되었습니다. 이는 왕의 능행과 관리의 용이성을 고려한 것입니다." },
+              { title: "자연과의 조화", text: "자연 지형을 최대한 살리면서 주변 자연 경관과 아름답게 조화를 이루도록 조성되었습니다." },
+              { title: "능역 구성", text: "재실과 진입 공간, 제향 공간, 전이 공간, 능침 공간으로 나뉘며, 각 공간은 유교적 이념과 예법에 따라 배치되었습니다." },
+              { title: "다양한 능의 형태", text: "왕이나 왕비 한 사람의 봉분만 있는 단릉, 왕과 왕비의 봉분을 나란히 배치한 쌍릉, 왕과 왕비, 계비의 세 봉분을 나란히 배치한 삼연릉 등 다양한 형태로 조성되었습니다." },
+              { title: "뛰어난 보존 상태 및 기록", text: "한국 역대 왕조의 왕릉 중 보존 상태가 가장 양호하며, 『국조오례의』, 『경국대전』, 『의궤』와 같은 상세한 기록들이 보존되어 있어 당시의 장례 문화, 조성 과정, 규정 등을 알 수 있습니다." },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card">
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -185,7 +181,7 @@ export default function JoseonPage() {
             </p>
 
             {questions.map((question, questionIndex) => (
-              <div key={questionIndex + 1} className="quiz-question">
+              <div key={questionIndex} className="quiz-question">
                 <h3>
                   Q{questionIndex + 1}. {question.question}
                 </h3>

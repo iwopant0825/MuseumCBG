@@ -117,44 +117,36 @@ export default function BangudaePage() {
         <section className="features-section">
           <h2>주요 특징</h2>
           <div className="features-grid">
-            <div className="feature-card">
-              <h3>고래 그림</h3>
-              <p>세계에서 가장 오래된 고래 사냥 장면을 묘사한 암각화</p>
-            </div>
-            <div className="feature-card">
-              <h3>동물 그림</h3>
-              <p>사슴, 멧돼지, 호랑이 등 다양한 동물들의 생동감 있는 표현</p>
-            </div>
-            <div className="feature-card">
-              <h3>사냥 장면</h3>
-              <p>선사시대 사람들의 생활상과 사냥 방식을 보여주는 장면들</p>
-            </div>
-            <div className="feature-card">
-              <h3>의식 장면</h3>
-              <p>종교적 의식이나 샤머니즘과 관련된 신비로운 그림들</p>
-            </div>
+            {[
+              { title: "고래 그림", text: "세계에서 가장 오래된 고래 사냥 장면을 묘사한 암각화로, 다양한 종류의 고래와 그들의 습성이 생생하게 표현되어 있습니다." },
+              { title: "동물 그림", text: "호랑이, 멧돼지, 사슴 등 육지 동물과 거북, 바다사자 등 바다 동물들이 생동감 있게 묘사되어 당시의 생태 환경을 엿볼 수 있습니다." },
+              { title: "사냥 장면", text: "선사시대 사람들의 사냥 방식과 어로 활동을 보여주는 장면들로, 당시의 생활상과 기술 수준을 짐작하게 합니다." },
+              { title: "의식 장면", text: "종교적 의식이나 샤머니즘과 관련된 신비로운 그림들이 포함되어 있어 선사시대 인류의 정신세계를 엿볼 수 있습니다." },
+              { title: "예술성 및 기법", text: "단순한 형태를 넘어 동물의 활동적인 모습과 생태적 특징을 사실적으로 묘사하며, 선과 점을 이용한 표현 기법이 뛰어납니다." },
+              { title: "보존 환경", text: "암각화가 새겨진 바위면의 윗부분이 처마처럼 튀어나와 자연적인 바위그늘을 형성하여 비바람으로부터 그림을 보호하고 있습니다." },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card">
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         <section className="significance-section">
           <h2>문화적 가치</h2>
           <div className="significance-content">
-            <div className="significance-item">
-              <h3>🐋 선사 예술</h3>
-              <p>신석기시대 암각화 예술의 세계적 보고입니다.</p>
-            </div>
-            <div className="significance-item">
-              <h3>🎨 예술적 가치</h3>
-              <p>생동감 넘치는 표현력과 뛰어난 예술성을 보여줍니다.</p>
-            </div>
-            <div className="significance-item">
-              <h3>📚 역사적 자료</h3>
-              <p>선사시대 인류의 생활과 신앙을 보여주는 귀중한 자료입니다.</p>
-            </div>
-            <div className="significance-item">
-              <h3>🌊 해양 문화</h3>
-              <p>고대 해양 문화와 고래 사냥 문화의 증거입니다.</p>
-            </div>
+            {[
+              { icon: "history_edu", title: "선사시대 생활상 연구", text: "사냥과 어로 활동, 당시 사람들의 생활 모습과 정신세계를 엿볼 수 있는 중요한 자료입니다." },
+              { icon: "whale", title: "세계 최고(最古)의 포경 유적", text: "약 7,000년 전 신석기 시대에 제작된 것으로 추정되며, 지구상에 현존하는 고래 사냥 그림 중 가장 오래된 것으로 평가됩니다." },
+              { icon: "palette", title: "신앙과 예술의 결합", text: "사냥을 생업으로 삼던 사람들이 바위에 신비한 힘이 있다고 믿고 사냥 대상 동물을 새기며 풍요를 기원했던 신앙적 의미와 예술적 감각이 결합된 작품입니다." },
+              { icon: "public", title: "탁월한 보편적 가치", text: "선사인들의 예술성과 고래잡이라는 희소한 주제를 창의적으로 풀어낸 걸작이자 한반도 동남부 연안 지역 사람들의 문화 발전을 집약적으로 보여주는 탁월한 가치를 지닙니다." },
+            ].map((item, index) => (
+              <div key={index} className="significance-item">
+                <h3><span className="material-symbols-outlined">{item.icon}</span> {item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 

@@ -115,34 +115,17 @@ export default function GetbolPage() {
         <section className="features-section">
           <h2>구성 갯벌</h2>
           <div className="features-grid">
-            <div className="feature-card">
-              <h3>서천 갯벌</h3>
-              <p>
-                충청남도 서천의 생태 보전 가치가 높은 갯벌로, 다양한 저서생물의
-                서식지입니다.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>고창 갯벌</h3>
-              <p>
-                전라북도 고창의 철새 도래지로 유명한 갯벌로, 국제적 철새 이동
-                경로의 중요한 기착지입니다.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>신안 갯벌</h3>
-              <p>
-                전라남도 신안의 광활한 갯벌 생태계로, 세계 최대 규모의 단일 갯벌
-                지역입니다.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>보성-순천 갯벌</h3>
-              <p>
-                전라남도 순천만의 세계적 갯벌 습지로, 생물 다양성이 특히 풍부한
-                지역입니다.
-              </p>
-            </div>
+            {[
+              { title: "서천 갯벌", text: "충청남도 서천의 생태 보전 가치가 높은 갯벌로, 국내에서 가장 많은 철새 개체수를 부양하는 철새의 낙원입니다." },
+              { title: "고창 갯벌", text: "전라북도 고창의 갯벌은 쉐니어가 발달하여 지질학적 가치가 높고, 모래갯벌, 혼합갯벌, 펄갯벌이 나타나는 퇴적 스펙트럼을 잘 보여줍니다." },
+              { title: "신안 갯벌", text: "전라남도 신안의 광활한 갯벌 생태계로, 가장 넓은 면적을 자랑하며 갯벌의 모든 유형을 볼 수 있고 가장 많은 생물이 서식하는 곳입니다." },
+              { title: "보성-순천 갯벌", text: "전라남도 순천만의 세계적 갯벌 습지로, 입자가 가장 가는 펄갯벌이 나타나며 국내 최대 꼬막 생산지로 독특한 전통 어업 방식인 뻘배가 발달했습니다." },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card">
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 

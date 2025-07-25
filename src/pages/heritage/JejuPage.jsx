@@ -107,50 +107,34 @@ export default function JejuPage() {
         <section className="features-section">
           <h2>주요 구성</h2>
           <div className="features-grid">
-            <div className="feature-card">
-              <h3>한라산천연보호구역</h3>
-              <p>해발 1,950m의 한라산을 중심으로 한 고산식물과 화산지형</p>
-            </div>
-            <div className="feature-card">
-              <h3>성산일출봉</h3>
-              <p>수중 화산 분출로 형성된 응회환과 아름다운 일출 경관</p>
-            </div>
-            <div className="feature-card">
-              <h3>거문오름 용암동굴계</h3>
-              <p>만장굴, 김녕굴, 벵뒤굴 등 세계적 규모의 용암동굴군</p>
-            </div>
-            <div className="feature-card">
-              <h3>독특한 생태계</h3>
-              <p>화산섬 특유의 고유종과 아열대-온대 식생 분포</p>
-            </div>
+            {[
+              { title: "한라산 천연보호구역", text: "한국에서 가장 높은 산으로, 정상부의 백록담 분화구와 다양한 형태의 암석, 폭포를 포함하고 있습니다. 고도에 따라 기후대가 달라져 난대, 온대, 한대 식물 1,800여 종과 동물 4,000여 종이 서식하는 생태계의 보고입니다." },
+              { title: "성산일출봉 응회구", text: "오래전 바다 속 화산 활동으로 솟아올라 극적인 장관을 연출하는 곳입니다. 얕은 바다에서 수중 폭발한 화산 폭발 과정을 알 수 있게 해주는 세계적으로 중요한 곳으로 평가받습니다." },
+              { title: "거문오름 용암동굴계", text: "형형색색의 탄산염 생성물이 동굴의 천장과 바닥을 화려하게 장식하여 세계에서 가장 아름다운 동굴계로 꼽힙니다. 만장굴, 김녕굴, 벵뒤굴, 용천동굴, 당처물동굴 등이 포함됩니다." },
+              { title: "독특한 생태계", text: "화산섬 특유의 고유종과 아열대-온대 식생 분포를 보이며, 한국산 관속식물의 약 절반이 제주도에 자생하고 멸종위기종 및 보호야생종의 약 절반이 제주도에 분포합니다." },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card">
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         <section className="significance-section">
           <h2>자연적 가치</h2>
           <div className="significance-content">
-            <div className="significance-item">
-              <h3>🌋 화산 지형</h3>
-              <p>
-                세계적으로 보기 드문 화산 활동의 완전한 기록을 보존하고
-                있습니다.
-              </p>
-            </div>
-            <div className="significance-item">
-              <h3>🕳️ 용암동굴</h3>
-              <p>세계에서 가장 긴 용암동굴 중 하나인 만장굴을 포함합니다.</p>
-            </div>
-            <div className="significance-item">
-              <h3>🌿 생물 다양성</h3>
-              <p>다양한 고도대에 따른 수직적 식생 분포를 보여줍니다.</p>
-            </div>
-            <div className="significance-item">
-              <h3>🏔️ 경관적 가치</h3>
-              <p>
-                화산섬의 아름다운 자연경관과 독특한 지질 구조를 간직하고
-                있습니다.
-              </p>
-            </div>
+            {[
+              { icon: "volcano", title: "지질학적 가치", text: "세계적으로 보기 드물게 움직이지 않는 대륙 지각판 위 열점(hot spot)에 생성된 대규모 순상 화산으로 특별한 가치를 지닙니다. 화산섬 특유의 지질학적 특성과 발전 과정 등 지구의 역사를 잘 보여줍니다." },
+              { icon: "cave", title: "용암동굴의 아름다움과 중요성", text: "세계에서 가장 긴 용암동굴 중 하나인 만장굴을 포함하며, 다른 용암 동굴에서는 흔히 볼 수 없는 종유석 같은 탄산염 동굴 생성물이 다양하게 나타나 그 가치가 매우 높습니다." },
+              { icon: "forest", title: "생태학적 가치", text: "다양한 생물의 서식지가 분포하고 있어 화산의 생성 과정 연구와 생태계 연구에 있어서 중요한 학술적 가치를 지닙니다. 한국산 관속식물의 약 절반이 제주도에 자생하며, 멸종위기종 및 보호야생종의 약 절반이 제주도에 분포합니다." },
+              { icon: "landscape", title: "뛰어난 자연미와 경관적 가치", text: "화산섬의 아름다운 자연경관과 독특한 지질 구조를 간직하고 있으며, 유네스코 세계유산 등재 기준인 '최상의 자연 현상이나 뛰어난 자연미와 미학적 중요성을 지닌 지역'에 부합합니다." },
+            ].map((item, index) => (
+              <div key={index} className="significance-item">
+                <h3><span className="material-symbols-outlined">{item.icon}</span> {item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 

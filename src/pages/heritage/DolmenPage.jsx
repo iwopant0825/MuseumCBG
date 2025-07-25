@@ -105,18 +105,16 @@ export default function DolmenPage() {
         <section className="features-section">
           <h2>구성 지역</h2>
           <div className="features-grid">
-            <div className="feature-card">
-              <h3>고창 고인돌유적</h3>
-              <p>전북 고창군에 위치하며 447기의 고인돌이 분포하는 최대 규모</p>
-            </div>
-            <div className="feature-card">
-              <h3>화순 고인돌유적</h3>
-              <p>전남 화순군에 위치하며 596기로 가장 많은 고인돌이 밀집</p>
-            </div>
-            <div className="feature-card">
-              <h3>강화 고인돌유적</h3>
-              <p>인천 강화군에 위치하며 120여 기의 고인돌과 고인돌군</p>
-            </div>
+            {[
+              { title: "고창 고인돌유적", text: "전북 고창군에 약 2,000여 기의 고인돌이 분포하며, 특히 죽림리 일원에는 500기 이상이 밀집 분포하여 단일 구역으로는 최대 밀집도를 보입니다. 다양한 형식의 고인돌이 분포하여 동북아 고인돌의 변천사를 한눈에 볼 수 있습니다." },
+              { title: "화순 고인돌유적", text: "전남 화순군에 약 596기의 고인돌이 분포하며, 최근에 발견되어 보존 상태가 좋고 고인돌 축조 과정을 보여주는 채석장이 발견되어 당시 기술을 엿볼 수 있습니다." },
+              { title: "강화 고인돌유적", text: "인천 강화군에는 탁자식(북방식)과 바둑판식(남방식) 고인돌이 섞여 있으며, 특히 탁자식 고인돌이 압도적으로 많고 산 능선 등 구릉 지역에 많이 분포하는 것이 특징입니다." },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card">
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -172,7 +170,7 @@ export default function DolmenPage() {
             </p>
 
             {questions.map((question, questionIndex) => (
-              <div key={question.id} className="quiz-question">
+              <div key={questionIndex} className="quiz-question">
                 <h3>
                   Q{questionIndex + 1}. {question.question}
                 </h3>

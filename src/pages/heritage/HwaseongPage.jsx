@@ -114,34 +114,18 @@ export default function HwaseongPage() {
         <section className="features-section">
           <h2>주요 시설</h2>
           <div className="features-grid">
-            <div className="feature-card">
-              <h3>성곽 구조</h3>
-              <p>
-                총 길이 5.7km의 과학적으로 설계된 성곽으로 지형을 최대한
-                활용했습니다.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>4대 문</h3>
-              <p>
-                장안문, 팔달문, 창룡문, 화서문의 웅장한 성문이 각각의 특색을
-                가지고 있습니다.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>군사 시설</h3>
-              <p>
-                포루, 각루, 봉돈 등 첨단 방어 시설이 체계적으로 배치되어
-                있습니다.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>화성성역의궤</h3>
-              <p>
-                건설 과정을 상세히 기록한 조선의 기록문화로 복원의 근거가
-                되었습니다.
-              </p>
-            </div>
+            {[
+              { title: "성곽 구조", text: "총 길이 5,744m의 과학적으로 설계된 성곽으로, 지형을 최대한 활용한 평산성(平山城)의 형태를 띠고 있습니다." },
+              { title: "4대 성문", text: "장안문(북문), 팔달문(남문), 창룡문(동문), 화서문(서문)이 있으며, 각각 웅장하고 독특한 건축미를 자랑합니다." },
+              { title: "군사 시설", text: "포루, 각루, 봉돈, 공심돈, 암문 등 당시 첨단 방어 시설이 체계적으로 배치되어 있습니다. 특히 공심돈은 이전 성곽에서 볼 수 없었던 새로운 방어 시설입니다." },
+              { title: "화성성역의궤", text: "건설 과정을 상세히 기록한 조선의 기록문화로, 파괴된 화성을 원형 그대로 복원할 수 있었던 결정적인 근거가 되었습니다. 2007년 유네스코 세계기록유산으로 등재된 조선왕조 의궤의 일부입니다." },
+              { title: "화성행궁", text: "수원화성 내부에 위치한 궁궐로, 정조대왕이 능원에 참배할 때 머물렀던 임시 거처였습니다." },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card">
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 

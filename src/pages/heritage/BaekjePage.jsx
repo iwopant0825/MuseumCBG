@@ -101,22 +101,17 @@ export default function BaekjePage() {
         <section className="features-section">
           <h2>주요 특징</h2>
           <div className="features-grid">
-            <div className="feature-card">
-              <h3>공주 지역</h3>
-              <p>웅진시대 백제의 수도로 공산성과 송산리 고분군</p>
-            </div>
-            <div className="feature-card">
-              <h3>부여 지역</h3>
-              <p>사비시대 백제의 수도로 부소산성과 정림사지</p>
-            </div>
-            <div className="feature-card">
-              <h3>익산 지역</h3>
-              <p>백제 말기 별도로 왕궁리 유적과 미륵사지</p>
-            </div>
-            <div className="feature-card">
-              <h3>왕릉 문화</h3>
-              <p>백제 왕실의 무덤과 부장품을 통한 고대 문화 이해</p>
-            </div>
+            {[
+              { title: "공주 지역", text: "웅진시대 백제의 수도로, 공산성(왕궁 방어)과 송산리 고분군(무령왕릉 포함)이 대표적입니다." },
+              { title: "부여 지역", text: "사비시대 백제의 수도로, 관북리 유적과 부소산성, 능산리 고분군, 정림사지, 부여 나성 등 다양한 유적이 남아있습니다." },
+              { title: "익산 지역", text: "백제 말기 제2의 수도였던 곳으로, 왕궁리 유적과 미륵사지 등 백제 불교 문화의 정수를 보여줍니다." },
+              { title: "왕릉 문화", text: "백제 왕실의 무덤과 부장품을 통해 당시의 뛰어난 예술성과 내세관을 엿볼 수 있습니다." },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card">
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -159,7 +154,7 @@ export default function BaekjePage() {
             </p>
 
             {questions.map((question, questionIndex) => (
-              <div key={questionIndex + 1} className="quiz-question">
+              <div key={questionIndex} className="quiz-question">
                 <h3>
                   Q{questionIndex + 1}. {question.question}
                 </h3>

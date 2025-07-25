@@ -118,35 +118,36 @@ export default function GayaPage() {
         <section className="history-section">
           <h2>역사적 배경</h2>
           <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-marker">1-3세기</div>
-              <div className="timeline-content">
-                <h3>가야 연맹 형성기</h3>
-                <p>
-                  한반도 남부에 여러 소국들이 연맹체를 형성하며 가야문화의
-                  기초가 마련됨
-                </p>
+            {[
+              {
+                marker: "1세기경",
+                title: "가야 연맹 형성",
+                text: "변한의 여러 소국들이 가야라는 이름으로 연맹체를 형성하기 시작하며 독자적인 문화를 발전시킴.",
+              },
+              {
+                marker: "4세기경",
+                title: "전기 가야 연맹 발전",
+                text: "금관가야를 중심으로 낙동강 하류 지역에서 활발한 철기 생산과 해상 교역을 통해 성장.",
+              },
+              {
+                marker: "5세기경",
+                title: "후기 가야 연맹 재편",
+                text: "고구려의 남하로 전기 가야 연맹이 약화되고, 대가야를 중심으로 고령 지역에서 후기 가야 연맹이 재편됨.",
+              },
+              {
+                marker: "6세기 중반",
+                title: "가야 연맹 쇠퇴 및 멸망",
+                text: "신라와 백제의 압박 속에서 점차 세력을 잃고, 562년 대가야가 신라에 병합되며 가야 연맹은 역사 속으로 사라짐.",
+              },
+            ].map((item, index) => (
+              <div key={index} className="timeline-item">
+                <div className="timeline-marker">{item.marker}</div>
+                <div className="timeline-content">
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
               </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-marker">4-5세기</div>
-              <div className="timeline-content">
-                <h3>가야 문화 전성기</h3>
-                <p>
-                  철기 제작 기술과 토기 문화가 절정에 달하며, 대외 교역이
-                  활발해짐
-                </p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-marker">6세기 후반</div>
-              <div className="timeline-content">
-                <h3>가야 연맹 쇠퇴</h3>
-                <p>
-                  신라의 팽창으로 가야 연맹이 점차 쇠퇴하며 역사 속으로 사라짐
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
@@ -236,7 +237,7 @@ export default function GayaPage() {
                 <div className="quiz-options">
                   {question.options.map((option, optionIndex) => (
                     <button
-                      key={optionIndex}
+                      key={`${questionIndex}-${optionIndex}`}
                       className={`quiz-option ${
                         selectedAnswers[questionIndex] === optionIndex
                           ? "selected"

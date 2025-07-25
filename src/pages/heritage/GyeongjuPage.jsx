@@ -101,26 +101,18 @@ export default function GyeongjuPage() {
         <section className="features-section">
           <h2>구성 지구</h2>
           <div className="features-grid">
-            <div className="feature-card">
-              <h3>월성지구</h3>
-              <p>신라 왕궁터인 월성과 계림, 첨성대 등이 위치한 핵심 지역</p>
-            </div>
-            <div className="feature-card">
-              <h3>남산지구</h3>
-              <p>신라 불교문화의 보고로 불상과 석탑 등 수많은 유물이 산재</p>
-            </div>
-            <div className="feature-card">
-              <h3>대릉원지구</h3>
-              <p>신라 왕과 왕족들의 거대한 무덤들이 모여있는 고분공원</p>
-            </div>
-            <div className="feature-card">
-              <h3>황룡사지구</h3>
-              <p>신라 최대 사찰이었던 황룡사터와 분황사 등이 위치</p>
-            </div>
-            <div className="feature-card">
-              <h3>산성지구</h3>
-              <p>명활산성을 중심으로 한 신라의 방어시설 유적</p>
-            </div>
+            {[
+              { title: "남산지구", text: "신라 불교 미술의 보고이자 '야외 박물관'으로 불립니다. 나정, 포석정, 미륵곡 석불좌상 등 수많은 불교 유적이 산재해 있습니다." },
+              { title: "월성지구", text: "신라 왕궁터인 월성과 김알지 탄생 설화가 깃든 계림, 임해전지(동궁과 월지), 동양 최고(最古)의 천문 시설인 첨성대 등이 위치하여 신라 왕경의 면모를 보여줍니다." },
+              { title: "대릉원지구", text: "신라 왕과 왕비, 귀족 등 높은 신분 계층의 무덤들이 밀집된 지역입니다. 황남대총, 천마총 등에서 금관, 천마도 등 귀중한 유물들이 출토되었습니다." },
+              { title: "황룡사지구", text: "신라 불교의 정수를 보여주는 대규모 사찰 유적지입니다. 황룡사지와 분황사가 있으며, 몽골 침입으로 소실된 황룡사는 당시 웅장했던 대사찰의 규모를 짐작하게 합니다." },
+              { title: "산성지구", text: "신라 왕경 방어 시설의 핵심입니다. 서기 400년 이전에 축조된 것으로 추정되는 명활산성이 있어 신라의 뛰어난 축성술과 방어 의지를 엿볼 수 있습니다." },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card">
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -171,7 +163,7 @@ export default function GyeongjuPage() {
             </p>
 
             {questions.map((question, questionIndex) => (
-              <div key={question.id} className="quiz-question">
+              <div key={questionIndex} className="quiz-question">
                 <h3>
                   Q{questionIndex + 1}. {question.question}
                 </h3>

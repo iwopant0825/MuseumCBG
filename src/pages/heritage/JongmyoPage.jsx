@@ -101,22 +101,19 @@ export default function JongmyoPage() {
         <section className="features-section">
           <h2>주요 특징</h2>
           <div className="features-grid">
-            <div className="feature-card">
-              <h3>정전</h3>
-              <p>19실의 신실로 구성된 조선 왕실의 정전</p>
-            </div>
-            <div className="feature-card">
-              <h3>영녕전</h3>
-              <p>추존왕과 추존왕비의 신위를 모신 별전</p>
-            </div>
-            <div className="feature-card">
-              <h3>종묘제례</h3>
-              <p>유네스코 무형문화유산으로 지정된 제례 의식</p>
-            </div>
-            <div className="feature-card">
-              <h3>종묘제례악</h3>
-              <p>제례와 함께 연주되는 전통 궁중음악</p>
-            </div>
+            {[
+              { title: "건축 양식", text: "가장 정제되고 장엄한 건축물 중 하나로, 화려한 단청이나 장식을 최소화하고 절제된 아름다움을 보여줍니다. 특히 정전은 지붕 길이가 100미터가 넘어 우리나라에서 가장 긴 목조건물로 꼽힙니다." },
+              { title: "정전", text: "정식으로 왕위에 오른 왕과 왕비의 신주를 모시는 중심 건물입니다. 현재 19실에 49위의 신위가 모셔져 있습니다." },
+              { title: "영녕전", text: "추존된 왕과 왕비, 또는 복위된 왕들의 신주를 모시는 별묘입니다. 현재 16실에 34위의 신위가 모셔져 있습니다." },
+              { title: "종묘제례", text: "조선시대 국가의 가장 중요한 제사였으며, 현재도 매년 5월 첫째 주 일요일에 거행됩니다. 유네스코 무형문화유산으로 지정된 제례 의식입니다." },
+              { title: "종묘제례악", text: "제례와 함께 연주되는 전통 궁중음악으로, 유네스코 인류무형문화유산으로 등재되어 있습니다." },
+              { title: "부속 건물", text: "제례 준비를 위한 어숙실(재궁), 향대청, 망묘루 등 여러 부속 전각들이 있습니다." },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card">
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -163,7 +160,7 @@ export default function JongmyoPage() {
             </p>
 
             {questions.map((question, questionIndex) => (
-              <div key={questionIndex + 1} className="quiz-question">
+              <div key={questionIndex} className="quiz-question">
                 <h3>
                   Q{questionIndex + 1}. {question.question}
                 </h3>

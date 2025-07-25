@@ -149,9 +149,11 @@
   pointer-events: auto;
   opacity: 0;
   transition: opacity 0.4s ease, transform 0.4s ease;
+  display: none; /* 기본적으로 숨김 */
 }
 
 .completion-panel.visible {
+  display: block; /* 보이게 함 */
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
   pointer-events: auto;

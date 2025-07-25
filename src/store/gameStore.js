@@ -171,26 +171,44 @@ export const useGameStore = create(
         });
       },
 
+      unlockAllHeritages: () => {
+        set((state) => ({
+          heritages: state.heritages.map((h) => ({
+            ...h,
+            unlocked: true,
+            quizSolved: true, // 모든 퀴즈도 해결된 것으로 처리
+          })),
+          gameCompleted: true, // 이 버튼을 누르면 게임 완료 상태로 만듦
+        }));
+      },
+
       // 퀴즈 해결 처리
       markQuizAsSolved: (heritageId) => {
         set((state) => {
-          let allQuizzesSolved = false;
-          const updatedHeritages = state.heritages.map((h) =>
+          // 1. 현재 문화유산의 quizSolved 상태를 업데이트합니다.
+          let heritagesAfterQuizSolved = state.heritages.map((h) =>
             h.id === heritageId ? { ...h, quizSolved: true } : h
           );
 
-          const nextHeritage = state.heritages.find((h) => !h.unlocked);
-          if (nextHeritage) {
-            updatedHeritages.find(
-              (h) => h.id === nextHeritage.id
-            ).unlocked = true;
+          // 2. 업데이트된 목록(heritagesAfterQuizSolved)에서 다음 해금할 문화유산을 찾습니다.
+          const nextHeritageToUnlock = heritagesAfterQuizSolved.find((h) => !h.unlocked);
+
+          let finalHeritages;
+          if (nextHeritageToUnlock) {
+            // 3. 다음 해금할 문화유산이 있다면, 해당 문화유산을 해금합니다.
+            finalHeritages = heritagesAfterQuizSolved.map((h) =>
+              h.id === nextHeritageToUnlock.id ? { ...h, unlocked: true } : h
+            );
           } else {
-            // 모든 유산이 해금된 경우
-            allQuizzesSolved = updatedHeritages.every((h) => h.quizSolved);
+            // 4. 더 이상 해금할 문화유산이 없다면, 목록은 이미 최종 상태입니다.
+            finalHeritages = heritagesAfterQuizSolved;
           }
 
+          // 5. 최종 상태에서 모든 퀴즈가 해결되었는지 확인합니다.
+          const allQuizzesSolved = finalHeritages.every((h) => h.quizSolved);
+
           return {
-            heritages: updatedHeritages,
+            heritages: finalHeritages,
             gameCompleted: allQuizzesSolved,
           };
         });

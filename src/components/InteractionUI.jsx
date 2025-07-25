@@ -122,14 +122,14 @@ export default function InteractionUI() {
 
       {/* 액션 버튼 */}
       <div className="action-panel">
-        <button
+        <button style={{ color: "white", backgroundColor: "rgba(0, 0, 0, 0.082)" }}
           className="reset-button"
           onClick={() => {
             resetGame();
             window.location.reload();
           }}
         >
-          <span className="material-symbols-outlined">refresh</span>
+          <span s className="material-symbols-outlined">refresh</span>
           게임 리셋
         </button>
       </div>
