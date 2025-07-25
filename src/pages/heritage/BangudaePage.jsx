@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../../store/gameStore";
 import "./HeritagePage.css";
@@ -67,6 +67,12 @@ export default function BangudaePage() {
     }, 100);
   };
 
+  useEffect(() => {
+    if (quizCompleted) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  }, [quizCompleted]);
+
   return (
     <div className="heritage-page">
       <nav className="heritage-nav">
@@ -110,7 +116,10 @@ export default function BangudaePage() {
         <section className="description-section">
           <h2>개요</h2>
           <p>
-            반구대 암각화는 신석기시대부터 청동기시대에 이르는 선사시대 바위그림으로, 고래, 바다동물, 육지동물 등 353점의 그림이 새겨져 있습니다. 선사시대 인류의 생활과 신앙을 보여주는 귀중한 문화유산으로, 2025년 7월 유네스코 세계유산으로 등재될 예정입니다.
+            반구대 암각화는 신석기시대부터 청동기시대에 이르는 선사시대
+            바위그림으로, 고래, 바다동물, 육지동물 등 353점의 그림이 새겨져
+            있습니다. 선사시대 인류의 생활과 신앙을 보여주는 귀중한
+            문화유산으로, 2025년 7월 유네스코 세계유산으로 등재될 예정입니다.
           </p>
         </section>
 
@@ -118,12 +127,30 @@ export default function BangudaePage() {
           <h2>주요 특징</h2>
           <div className="features-grid">
             {[
-              { title: "고래 그림", text: "세계에서 가장 오래된 고래 사냥 장면을 묘사한 암각화로, 다양한 종류의 고래와 그들의 습성이 생생하게 표현되어 있습니다." },
-              { title: "동물 그림", text: "호랑이, 멧돼지, 사슴 등 육지 동물과 거북, 바다사자 등 바다 동물들이 생동감 있게 묘사되어 당시의 생태 환경을 엿볼 수 있습니다." },
-              { title: "사냥 장면", text: "선사시대 사람들의 사냥 방식과 어로 활동을 보여주는 장면들로, 당시의 생활상과 기술 수준을 짐작하게 합니다." },
-              { title: "의식 장면", text: "종교적 의식이나 샤머니즘과 관련된 신비로운 그림들이 포함되어 있어 선사시대 인류의 정신세계를 엿볼 수 있습니다." },
-              { title: "예술성 및 기법", text: "단순한 형태를 넘어 동물의 활동적인 모습과 생태적 특징을 사실적으로 묘사하며, 선과 점을 이용한 표현 기법이 뛰어납니다." },
-              { title: "보존 환경", text: "암각화가 새겨진 바위면의 윗부분이 처마처럼 튀어나와 자연적인 바위그늘을 형성하여 비바람으로부터 그림을 보호하고 있습니다." },
+              {
+                title: "고래 그림",
+                text: "세계에서 가장 오래된 고래 사냥 장면을 묘사한 암각화로, 다양한 종류의 고래와 그들의 습성이 생생하게 표현되어 있습니다.",
+              },
+              {
+                title: "동물 그림",
+                text: "호랑이, 멧돼지, 사슴 등 육지 동물과 거북, 바다사자 등 바다 동물들이 생동감 있게 묘사되어 당시의 생태 환경을 엿볼 수 있습니다.",
+              },
+              {
+                title: "사냥 장면",
+                text: "선사시대 사람들의 사냥 방식과 어로 활동을 보여주는 장면들로, 당시의 생활상과 기술 수준을 짐작하게 합니다.",
+              },
+              {
+                title: "의식 장면",
+                text: "종교적 의식이나 샤머니즘과 관련된 신비로운 그림들이 포함되어 있어 선사시대 인류의 정신세계를 엿볼 수 있습니다.",
+              },
+              {
+                title: "예술성 및 기법",
+                text: "단순한 형태를 넘어 동물의 활동적인 모습과 생태적 특징을 사실적으로 묘사하며, 선과 점을 이용한 표현 기법이 뛰어납니다.",
+              },
+              {
+                title: "보존 환경",
+                text: "암각화가 새겨진 바위면의 윗부분이 처마처럼 튀어나와 자연적인 바위그늘을 형성하여 비바람으로부터 그림을 보호하고 있습니다.",
+              },
             ].map((feature, index) => (
               <div key={index} className="feature-card">
                 <h3>{feature.title}</h3>
@@ -137,20 +164,37 @@ export default function BangudaePage() {
           <h2>문화적 가치</h2>
           <div className="significance-content">
             {[
-              { icon: "history_edu", title: "선사시대 생활상 연구", text: "사냥과 어로 활동, 당시 사람들의 생활 모습과 정신세계를 엿볼 수 있는 중요한 자료입니다." },
-              { icon: "whale", title: "세계 최고(最古)의 포경 유적", text: "약 7,000년 전 신석기 시대에 제작된 것으로 추정되며, 지구상에 현존하는 고래 사냥 그림 중 가장 오래된 것으로 평가됩니다." },
-              { icon: "palette", title: "신앙과 예술의 결합", text: "사냥을 생업으로 삼던 사람들이 바위에 신비한 힘이 있다고 믿고 사냥 대상 동물을 새기며 풍요를 기원했던 신앙적 의미와 예술적 감각이 결합된 작품입니다." },
-              { icon: "public", title: "탁월한 보편적 가치", text: "선사인들의 예술성과 고래잡이라는 희소한 주제를 창의적으로 풀어낸 걸작이자 한반도 동남부 연안 지역 사람들의 문화 발전을 집약적으로 보여주는 탁월한 가치를 지닙니다." },
+              {
+                icon: "history_edu",
+                title: "선사시대 생활상 연구",
+                text: "사냥과 어로 활동, 당시 사람들의 생활 모습과 정신세계를 엿볼 수 있는 중요한 자료입니다.",
+              },
+              {
+                icon: "whale",
+                title: "세계 최고(最古)의 포경 유적",
+                text: "약 7,000년 전 신석기 시대에 제작된 것으로 추정되며, 지구상에 현존하는 고래 사냥 그림 중 가장 오래된 것으로 평가됩니다.",
+              },
+              {
+                icon: "palette",
+                title: "신앙과 예술의 결합",
+                text: "사냥을 생업으로 삼던 사람들이 바위에 신비한 힘이 있다고 믿고 사냥 대상 동물을 새기며 풍요를 기원했던 신앙적 의미와 예술적 감각이 결합된 작품입니다.",
+              },
+              {
+                icon: "public",
+                title: "탁월한 보편적 가치",
+                text: "선사인들의 예술성과 고래잡이라는 희소한 주제를 창의적으로 풀어낸 걸작이자 한반도 동남부 연안 지역 사람들의 문화 발전을 집약적으로 보여주는 탁월한 가치를 지닙니다.",
+              },
             ].map((item, index) => (
               <div key={index} className="significance-item">
-                <h3><span className="material-symbols-outlined">{item.icon}</span> {item.title}</h3>
+                <h3>
+                  <span className="material-symbols-outlined">{item.icon}</span>{" "}
+                  {item.title}
+                </h3>
                 <p>{item.text}</p>
               </div>
             ))}
           </div>
         </section>
-
-        
 
         {!showQuiz && (
           <div className="quiz-trigger">
@@ -207,7 +251,10 @@ export default function BangudaePage() {
 
             {quizCompleted && (
               <div id="quiz-success" className="quiz-success">
-                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
+                <h3>
+                  <span className="material-symbols-outlined">celebration</span>{" "}
+                  축하합니다!
+                </h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

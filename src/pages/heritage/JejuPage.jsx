@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../../store/gameStore";
 import "./HeritagePage.css";
@@ -9,6 +9,12 @@ export default function JejuPage() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
+
+  useEffect(() => {
+    if (quizCompleted) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  }, [quizCompleted]);
 
   const questions = [
     {

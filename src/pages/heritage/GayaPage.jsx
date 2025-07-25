@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../../store/gameStore";
 import "./HeritagePage.css";
@@ -13,7 +13,12 @@ export default function GayaPage() {
   const questions = [
     {
       question: "가야고분군이 위치한 지역은 어디입니까?",
-      options: ["경상남도, 경상북도, 전라북도", "경기도, 강원도, 충청도", "서울, 인천, 경기", "전라남도, 충청남도, 경상북도"],
+      options: [
+        "경상남도, 경상북도, 전라북도",
+        "경기도, 강원도, 충청도",
+        "서울, 인천, 경기",
+        "전라남도, 충청남도, 경상북도",
+      ],
       correct: 0,
     },
     {
@@ -61,6 +66,12 @@ export default function GayaPage() {
       });
     }, 100);
   };
+
+  useEffect(() => {
+    if (quizCompleted) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  }, [quizCompleted]);
 
   return (
     <div className="heritage-page">
@@ -192,10 +203,26 @@ export default function GayaPage() {
           <h2>문화적 가치</h2>
           <div className="significance-content">
             {[
-              { icon: "vase", title: "독특한 토기 문화", text: "가야 특유의 회청색 경질토기와 장경호 등 독특한 토기 문화를 발전시켰습니다." },
-              { icon: "construction", title: "뛰어난 철기 기술", text: "동아시아 최고 수준의 철기 제작 기술을 보유하여 주변국과 활발한 교역을 전개했습니다." },
-              { icon: "public", title: "국제적 교류", text: "중국, 일본과의 활발한 교류를 통해 동아시아 문화 발전에 기여했습니다." },
-              { icon: "architecture", title: "독특한 고분 구조", text: "수혈식 석곽묘와 횡혈식 석실묘 등 다양한 고분 구조를 발전시켰습니다." },
+              {
+                icon: "vase",
+                title: "독특한 토기 문화",
+                text: "가야 특유의 회청색 경질토기와 장경호 등 독특한 토기 문화를 발전시켰습니다.",
+              },
+              {
+                icon: "construction",
+                title: "뛰어난 철기 기술",
+                text: "동아시아 최고 수준의 철기 제작 기술을 보유하여 주변국과 활발한 교역을 전개했습니다.",
+              },
+              {
+                icon: "public",
+                title: "국제적 교류",
+                text: "중국, 일본과의 활발한 교류를 통해 동아시아 문화 발전에 기여했습니다.",
+              },
+              {
+                icon: "architecture",
+                title: "독특한 고분 구조",
+                text: "수혈식 석곽묘와 횡혈식 석실묘 등 다양한 고분 구조를 발전시켰습니다.",
+              },
             ].map((item, index) => (
               <div key={index} className="significance-item">
                 <h3>
@@ -207,8 +234,6 @@ export default function GayaPage() {
             ))}
           </div>
         </section>
-
-        
 
         {/* 퀴즈 유도 버튼 */}
         {!showQuiz && (
@@ -268,7 +293,10 @@ export default function GayaPage() {
 
             {quizCompleted && (
               <div id="quiz-success" className="quiz-success">
-                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
+                <h3>
+                  <span className="material-symbols-outlined">celebration</span>{" "}
+                  축하합니다!
+                </h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

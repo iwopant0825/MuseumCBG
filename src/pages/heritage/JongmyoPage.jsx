@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../../store/gameStore";
 import "./HeritagePage.css";
@@ -18,12 +18,22 @@ export default function JongmyoPage() {
     },
     {
       question: "종묘의 주요 건물은?",
-      options: ["정전과 영녕전", "대웅전과 극락전", "인정전과 선정전", "경복궁과 창덕궁"],
+      options: [
+        "정전과 영녕전",
+        "대웅전과 극락전",
+        "인정전과 선정전",
+        "경복궁과 창덕궁",
+      ],
       correct: 0,
     },
     {
       question: "종묘제례의 특징은?",
-      options: ["1년에 한 번", "매월 거행", "500년 이상 이어진 제례 전통", "근래에 복원"],
+      options: [
+        "1년에 한 번",
+        "매월 거행",
+        "500년 이상 이어진 제례 전통",
+        "근래에 복원",
+      ],
       correct: 2,
     },
   ];
@@ -61,6 +71,12 @@ export default function JongmyoPage() {
       });
     }, 100);
   };
+
+  useEffect(() => {
+    if (quizCompleted) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  }, [quizCompleted]);
 
   return (
     <div className="heritage-page">
@@ -102,12 +118,30 @@ export default function JongmyoPage() {
           <h2>주요 특징</h2>
           <div className="features-grid">
             {[
-              { title: "건축 양식", text: "가장 정제되고 장엄한 건축물 중 하나로, 화려한 단청이나 장식을 최소화하고 절제된 아름다움을 보여줍니다. 특히 정전은 지붕 길이가 100미터가 넘어 우리나라에서 가장 긴 목조건물로 꼽힙니다." },
-              { title: "정전", text: "정식으로 왕위에 오른 왕과 왕비의 신주를 모시는 중심 건물입니다. 현재 19실에 49위의 신위가 모셔져 있습니다." },
-              { title: "영녕전", text: "추존된 왕과 왕비, 또는 복위된 왕들의 신주를 모시는 별묘입니다. 현재 16실에 34위의 신위가 모셔져 있습니다." },
-              { title: "종묘제례", text: "조선시대 국가의 가장 중요한 제사였으며, 현재도 매년 5월 첫째 주 일요일에 거행됩니다. 유네스코 무형문화유산으로 지정된 제례 의식입니다." },
-              { title: "종묘제례악", text: "제례와 함께 연주되는 전통 궁중음악으로, 유네스코 인류무형문화유산으로 등재되어 있습니다." },
-              { title: "부속 건물", text: "제례 준비를 위한 어숙실(재궁), 향대청, 망묘루 등 여러 부속 전각들이 있습니다." },
+              {
+                title: "건축 양식",
+                text: "가장 정제되고 장엄한 건축물 중 하나로, 화려한 단청이나 장식을 최소화하고 절제된 아름다움을 보여줍니다. 특히 정전은 지붕 길이가 100미터가 넘어 우리나라에서 가장 긴 목조건물로 꼽힙니다.",
+              },
+              {
+                title: "정전",
+                text: "정식으로 왕위에 오른 왕과 왕비의 신주를 모시는 중심 건물입니다. 현재 19실에 49위의 신위가 모셔져 있습니다.",
+              },
+              {
+                title: "영녕전",
+                text: "추존된 왕과 왕비, 또는 복위된 왕들의 신주를 모시는 별묘입니다. 현재 16실에 34위의 신위가 모셔져 있습니다.",
+              },
+              {
+                title: "종묘제례",
+                text: "조선시대 국가의 가장 중요한 제사였으며, 현재도 매년 5월 첫째 주 일요일에 거행됩니다. 유네스코 무형문화유산으로 지정된 제례 의식입니다.",
+              },
+              {
+                title: "종묘제례악",
+                text: "제례와 함께 연주되는 전통 궁중음악으로, 유네스코 인류무형문화유산으로 등재되어 있습니다.",
+              },
+              {
+                title: "부속 건물",
+                text: "제례 준비를 위한 어숙실(재궁), 향대청, 망묘루 등 여러 부속 전각들이 있습니다.",
+              },
             ].map((feature, index) => (
               <div key={index} className="feature-card">
                 <h3>{feature.title}</h3>
@@ -140,8 +174,6 @@ export default function JongmyoPage() {
             </div>
           </div>
         </section>
-
-        
 
         {!showQuiz && (
           <div className="quiz-trigger">
@@ -198,7 +230,10 @@ export default function JongmyoPage() {
 
             {quizCompleted && (
               <div id="quiz-success" className="quiz-success">
-                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
+                <h3>
+                  <span className="material-symbols-outlined">celebration</span>{" "}
+                  축하합니다!
+                </h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../../store/gameStore";
 import "./HeritagePage.css";
@@ -70,6 +70,12 @@ export default function SeokguramPage() {
     }, 100);
   };
 
+  useEffect(() => {
+    if (quizCompleted) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  }, [quizCompleted]);
+
   return (
     <div className="heritage-page">
       <nav className="heritage-nav">
@@ -115,7 +121,9 @@ export default function SeokguramPage() {
         <section className="description-section">
           <h2>개요</h2>
           <p>
-            석굴암과 불국사는 8세기 통일신라시대에 건립된 불교 건축의 걸작으로, 한국 불교 예술의 정수를 보여줍니다. 1995년 유네스코 세계문화유산에 등재되었습니다.
+            석굴암과 불국사는 8세기 통일신라시대에 건립된 불교 건축의 걸작으로,
+            한국 불교 예술의 정수를 보여줍니다. 1995년 유네스코 세계문화유산에
+            등재되었습니다.
           </p>
         </section>
 
@@ -123,11 +131,26 @@ export default function SeokguramPage() {
           <h2>주요 구성</h2>
           <div className="features-grid">
             {[
-              { title: "석굴암", text: "화강암을 다듬어 인공적으로 축조한 석굴 사원으로, 주실 중앙에는 거대한 본존불인 석가여래불상이 안치되어 있으며, 그 주위 벽면에는 보살상, 제자상, 역사상, 천왕상 등 총 38구의 불상이 조화롭게 배치되어 있습니다." },
-              { title: "불국사", text: "'불국정토(부처의 나라)'를 지상에 구현하고자 한 신라인의 염원이 담긴 사찰로, 돌을 다듬어 만든 석조 구조물과 아름다운 목조 건축물이 조화를 이루어 고대 불교 건축의 정수로 평가됩니다." },
-              { title: "다보탑과 석가탑", text: "불국사의 대표적인 석탑으로, 완벽한 비례와 기하학적인 직선미, 그리고 자유롭고 독특한 형식으로 대칭되면서도 강렬한 대비를 이루는 절묘한 구성을 갖추고 있습니다." },
-              { title: "청운교와 백운교", text: "불국사로 오르는 계단으로 속세에서 불국으로의 상징적 통로이며, 연화교와 칠보교 등 돌계단과 다리들이 아름다운 조화를 이룹니다." },
-              { title: "극락전과 무설전", text: "아미타여래와 비로자나불을 모신 신라 시대 불전의 정수로, 다양한 불전들이 각 부처와 보살들의 불국토를 체계화하고 통합하고자 한 다원식(多院式) 구조를 보여줍니다." },
+              {
+                title: "석굴암",
+                text: "화강암을 다듬어 인공적으로 축조한 석굴 사원으로, 주실 중앙에는 거대한 본존불인 석가여래불상이 안치되어 있으며, 그 주위 벽면에는 보살상, 제자상, 역사상, 천왕상 등 총 38구의 불상이 조화롭게 배치되어 있습니다.",
+              },
+              {
+                title: "불국사",
+                text: "'불국정토(부처의 나라)'를 지상에 구현하고자 한 신라인의 염원이 담긴 사찰로, 돌을 다듬어 만든 석조 구조물과 아름다운 목조 건축물이 조화를 이루어 고대 불교 건축의 정수로 평가됩니다.",
+              },
+              {
+                title: "다보탑과 석가탑",
+                text: "불국사의 대표적인 석탑으로, 완벽한 비례와 기하학적인 직선미, 그리고 자유롭고 독특한 형식으로 대칭되면서도 강렬한 대비를 이루는 절묘한 구성을 갖추고 있습니다.",
+              },
+              {
+                title: "청운교와 백운교",
+                text: "불국사로 오르는 계단으로 속세에서 불국으로의 상징적 통로이며, 연화교와 칠보교 등 돌계단과 다리들이 아름다운 조화를 이룹니다.",
+              },
+              {
+                title: "극락전과 무설전",
+                text: "아미타여래와 비로자나불을 모신 신라 시대 불전의 정수로, 다양한 불전들이 각 부처와 보살들의 불국토를 체계화하고 통합하고자 한 다원식(多院式) 구조를 보여줍니다.",
+              },
             ].map((feature, index) => (
               <div key={index} className="feature-card">
                 <h3>{feature.title}</h3>
@@ -165,8 +188,6 @@ export default function SeokguramPage() {
             </div>
           </div>
         </section>
-
-        
 
         {!showQuiz && (
           <div className="quiz-trigger">
@@ -227,7 +248,10 @@ export default function SeokguramPage() {
 
             {quizCompleted && (
               <div id="quiz-success" className="quiz-success">
-                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
+                <h3>
+                  <span className="material-symbols-outlined">celebration</span>{" "}
+                  축하합니다!
+                </h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

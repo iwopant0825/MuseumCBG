@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../../store/gameStore";
 import "./HeritagePage.css";
@@ -23,7 +23,12 @@ export default function BaekjePage() {
     },
     {
       question: "백제역사유적지구를 구성하는 지역은?",
-      options: ["공주, 부여, 익산", "경주, 공주, 부여", "부여, 익산, 서울", "공주, 익산, 경주"],
+      options: [
+        "공주, 부여, 익산",
+        "경주, 공주, 부여",
+        "부여, 익산, 서울",
+        "공주, 익산, 경주",
+      ],
       correct: 0,
     },
   ];
@@ -61,6 +66,12 @@ export default function BaekjePage() {
       });
     }, 100);
   };
+
+  useEffect(() => {
+    if (quizCompleted) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  }, [quizCompleted]);
 
   return (
     <div className="heritage-page">
@@ -102,10 +113,22 @@ export default function BaekjePage() {
           <h2>주요 특징</h2>
           <div className="features-grid">
             {[
-              { title: "공주 지역", text: "웅진시대 백제의 수도로, 공산성(왕궁 방어)과 송산리 고분군(무령왕릉 포함)이 대표적입니다." },
-              { title: "부여 지역", text: "사비시대 백제의 수도로, 관북리 유적과 부소산성, 능산리 고분군, 정림사지, 부여 나성 등 다양한 유적이 남아있습니다." },
-              { title: "익산 지역", text: "백제 말기 제2의 수도였던 곳으로, 왕궁리 유적과 미륵사지 등 백제 불교 문화의 정수를 보여줍니다." },
-              { title: "왕릉 문화", text: "백제 왕실의 무덤과 부장품을 통해 당시의 뛰어난 예술성과 내세관을 엿볼 수 있습니다." },
+              {
+                title: "공주 지역",
+                text: "웅진시대 백제의 수도로, 공산성(왕궁 방어)과 송산리 고분군(무령왕릉 포함)이 대표적입니다.",
+              },
+              {
+                title: "부여 지역",
+                text: "사비시대 백제의 수도로, 관북리 유적과 부소산성, 능산리 고분군, 정림사지, 부여 나성 등 다양한 유적이 남아있습니다.",
+              },
+              {
+                title: "익산 지역",
+                text: "백제 말기 제2의 수도였던 곳으로, 왕궁리 유적과 미륵사지 등 백제 불교 문화의 정수를 보여줍니다.",
+              },
+              {
+                title: "왕릉 문화",
+                text: "백제 왕실의 무덤과 부장품을 통해 당시의 뛰어난 예술성과 내세관을 엿볼 수 있습니다.",
+              },
             ].map((feature, index) => (
               <div key={index} className="feature-card">
                 <h3>{feature.title}</h3>
@@ -119,19 +142,31 @@ export default function BaekjePage() {
           <h2>문화적 가치</h2>
           <div className="significance-content">
             <div className="significance-item">
-              <h3><span className="material-symbols-outlined">fort</span> 왕국 문화</h3>
+              <h3>
+                <span className="material-symbols-outlined">fort</span> 왕국
+                문화
+              </h3>
               <p>백제 후기 왕국 문화의 정수를 보여줍니다.</p>
             </div>
             <div className="significance-item">
-              <h3><span className="material-symbols-outlined">location_city</span> 도시 계획</h3>
+              <h3>
+                <span className="material-symbols-outlined">location_city</span>{" "}
+                도시 계획
+              </h3>
               <p>고대 도시 계획과 건축 기술의 발전상을 알 수 있습니다.</p>
             </div>
             <div className="significance-item">
-              <h3><span className="material-symbols-outlined">public</span> 국제 교류</h3>
+              <h3>
+                <span className="material-symbols-outlined">public</span> 국제
+                교류
+              </h3>
               <p>중국, 일본과의 활발한 문화 교류를 보여줍니다.</p>
             </div>
             <div className="significance-item">
-              <h3><span className="material-symbols-outlined">palette</span> 예술 문화</h3>
+              <h3>
+                <span className="material-symbols-outlined">palette</span> 예술
+                문화
+              </h3>
               <p>백제 특유의 우아하고 세련된 예술 문화를 엿볼 수 있습니다.</p>
             </div>
           </div>
@@ -192,7 +227,10 @@ export default function BaekjePage() {
 
             {quizCompleted && (
               <div id="quiz-success" className="quiz-success">
-                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
+                <h3>
+                  <span className="material-symbols-outlined">celebration</span>{" "}
+                  축하합니다!
+                </h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

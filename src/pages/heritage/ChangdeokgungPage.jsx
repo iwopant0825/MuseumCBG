@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../../store/gameStore";
 import "./HeritagePage.css";
@@ -60,6 +60,12 @@ export default function ChangdeokgungPage() {
     }, 100);
   };
 
+  useEffect(() => {
+    if (quizCompleted) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  }, [quizCompleted]);
+
   return (
     <div className="heritage-page">
       {/* 상단 네비게이션 */}
@@ -118,13 +124,34 @@ export default function ChangdeokgungPage() {
           <h2>주요 건축물</h2>
           <div className="features-grid">
             {[
-              { title: "돈화문", text: "창덕궁의 정문으로, 현존하는 궁궐 정문 중 가장 오래된 문입니다." },
-              { title: "인정전", text: "창덕궁의 정전으로, 왕의 즉위식, 신하들의 하례, 외국 사신 접견 등 중요한 국가 행사가 치러지던 곳입니다." },
-              { title: "선정전", text: "왕이 거처하며 일상 업무를 보던 편전으로, 유일하게 청기와를 얹은 건물입니다." },
-              { title: "희정당", text: "원래 왕의 침실이 딸린 편전이었으나, 나중에 신하들과 국사를 논의하던 어전회의실로 사용되었습니다. 외형은 한옥이지만 실내는 서양식으로 구성되어 있습니다." },
-              { title: "대조전", text: "왕과 왕비가 거주하던 침전입니다. 창덕궁 전각 중 유일하게 용마루가 없는 건물입니다." },
-              { title: "낙선재", text: "검소하고 질박한 궁궐 건축의 특징을 보여주는 곳으로, 광복 이후 대한제국의 마지막 황실 가족이 생활했던 역사적 의미가 있는 곳입니다." },
-              { title: "후원(비원)", text: "자연 지형을 크게 변형시키지 않고 조성된 왕실 정원으로, 부용지, 주합루, 애련지, 존덕정, 옥류천 등 다양한 정자와 연못이 있습니다." },
+              {
+                title: "돈화문",
+                text: "창덕궁의 정문으로, 현존하는 궁궐 정문 중 가장 오래된 문입니다.",
+              },
+              {
+                title: "인정전",
+                text: "창덕궁의 정전으로, 왕의 즉위식, 신하들의 하례, 외국 사신 접견 등 중요한 국가 행사가 치러지던 곳입니다.",
+              },
+              {
+                title: "선정전",
+                text: "왕이 거처하며 일상 업무를 보던 편전으로, 유일하게 청기와를 얹은 건물입니다.",
+              },
+              {
+                title: "희정당",
+                text: "원래 왕의 침실이 딸린 편전이었으나, 나중에 신하들과 국사를 논의하던 어전회의실로 사용되었습니다. 외형은 한옥이지만 실내는 서양식으로 구성되어 있습니다.",
+              },
+              {
+                title: "대조전",
+                text: "왕과 왕비가 거주하던 침전입니다. 창덕궁 전각 중 유일하게 용마루가 없는 건물입니다.",
+              },
+              {
+                title: "낙선재",
+                text: "검소하고 질박한 궁궐 건축의 특징을 보여주는 곳으로, 광복 이후 대한제국의 마지막 황실 가족이 생활했던 역사적 의미가 있는 곳입니다.",
+              },
+              {
+                title: "후원(비원)",
+                text: "자연 지형을 크게 변형시키지 않고 조성된 왕실 정원으로, 부용지, 주합루, 애련지, 존덕정, 옥류천 등 다양한 정자와 연못이 있습니다.",
+              },
             ].map((feature, index) => (
               <div key={index} className="feature-card">
                 <h3>{feature.title}</h3>
@@ -138,11 +165,31 @@ export default function ChangdeokgungPage() {
           <h2>문화적 가치</h2>
           <div className="significance-content">
             {[
-              { icon: "nature", title: "자연과의 조화", text: "자연 지형을 거스르지 않고 건물을 배치한 독특한 건축 미학은 한국 전통 건축의 정수를 보여줍니다. 특히 후원은 자연 경관을 그대로 반영하여 자연의 아름다움과 인공의 정교함이 조화롭게 결합된 공간으로 평가받습니다." },
-              { icon: "history_edu", title: "역사적 중요성", text: "임진왜란 이후 조선의 정궁 역할을 하며 조선왕조의 주요 왕들이 거주하고 중요한 정치적 결정을 내렸던 장소입니다." },
-              { icon: "architecture", title: "건축적 특성", text: "경복궁과 달리 정문인 돈화문이 정남향이 아니고, 건물 배치가 여러 개의 축으로 이루어져 자연스러운 산세에 따라 자유롭게 배치된 것이 특징입니다." },
-              { icon: "gavel", title: "유교적 세계관", text: "유교 이념에 따라 상징적, 기능적으로 배치된 건물들은 조선 시대의 독특한 유교적 세계관을 보여줍니다." },
-              { icon: "preserved_landscape", title: "보존 가치", text: "경복궁의 전각들이 대부분 복원된 것과 달리, 창덕궁의 돈화문, 인정전, 선정전 등 많은 건물들이 원형 그대로 남아있어 사적으로서의 가치가 높습니다." },
+              {
+                icon: "nature",
+                title: "자연과의 조화",
+                text: "자연 지형을 거스르지 않고 건물을 배치한 독특한 건축 미학은 한국 전통 건축의 정수를 보여줍니다. 특히 후원은 자연 경관을 그대로 반영하여 자연의 아름다움과 인공의 정교함이 조화롭게 결합된 공간으로 평가받습니다.",
+              },
+              {
+                icon: "history_edu",
+                title: "역사적 중요성",
+                text: "임진왜란 이후 조선의 정궁 역할을 하며 조선왕조의 주요 왕들이 거주하고 중요한 정치적 결정을 내렸던 장소입니다.",
+              },
+              {
+                icon: "architecture",
+                title: "건축적 특성",
+                text: "경복궁과 달리 정문인 돈화문이 정남향이 아니고, 건물 배치가 여러 개의 축으로 이루어져 자연스러운 산세에 따라 자유롭게 배치된 것이 특징입니다.",
+              },
+              {
+                icon: "gavel",
+                title: "유교적 세계관",
+                text: "유교 이념에 따라 상징적, 기능적으로 배치된 건물들은 조선 시대의 독특한 유교적 세계관을 보여줍니다.",
+              },
+              {
+                icon: "preserved_landscape",
+                title: "보존 가치",
+                text: "경복궁의 전각들이 대부분 복원된 것과 달리, 창덕궁의 돈화문, 인정전, 선정전 등 많은 건물들이 원형 그대로 남아있어 사적으로서의 가치가 높습니다.",
+              },
             ].map((item, index) => (
               <div key={index} className="significance-item">
                 <h3>
@@ -154,8 +201,6 @@ export default function ChangdeokgungPage() {
             ))}
           </div>
         </section>
-
-        
 
         {/* 퀴즈 유도 버튼 */}
         {!showQuiz && (
@@ -215,7 +260,10 @@ export default function ChangdeokgungPage() {
 
             {quizCompleted && (
               <div id="quiz-success" className="quiz-success">
-                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
+                <h3>
+                  <span className="material-symbols-outlined">celebration</span>{" "}
+                  축하합니다!
+                </h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기

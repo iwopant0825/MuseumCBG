@@ -180,18 +180,28 @@ export const useGameStore = create(
           })),
           gameCompleted: true, // 이 버튼을 누르면 게임 완료 상태로 만듦
         }));
+        setTimeout(() => {
+          window.alert("축하합니다! 모든 문화유산 퀴즈를 클리어했습니다!");
+        }, 100);
       },
 
       // 퀴즈 해결 처리
       markQuizAsSolved: (heritageId) => {
         set((state) => {
+          // 이미 푼 문화유산이면 아무 동작도 하지 않음
+          const heritage = state.heritages.find((h) => h.id === heritageId);
+          if (heritage && heritage.quizSolved) {
+            return {};
+          }
           // 1. 현재 문화유산의 quizSolved 상태를 업데이트합니다.
           let heritagesAfterQuizSolved = state.heritages.map((h) =>
             h.id === heritageId ? { ...h, quizSolved: true } : h
           );
 
           // 2. 업데이트된 목록(heritagesAfterQuizSolved)에서 다음 해금할 문화유산을 찾습니다.
-          const nextHeritageToUnlock = heritagesAfterQuizSolved.find((h) => !h.unlocked);
+          const nextHeritageToUnlock = heritagesAfterQuizSolved.find(
+            (h) => !h.unlocked
+          );
 
           let finalHeritages;
           if (nextHeritageToUnlock) {

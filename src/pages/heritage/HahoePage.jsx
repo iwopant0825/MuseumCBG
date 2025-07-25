@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../../store/gameStore";
 import "./HeritagePage.css";
@@ -9,6 +9,12 @@ export default function HahoePage() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
+
+  useEffect(() => {
+    if (quizCompleted) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  }, [quizCompleted]);
 
   const questions = [
     {
@@ -122,25 +128,37 @@ export default function HahoePage() {
             <div className="feature-card">
               <h3>하회마을 (안동)</h3>
               <p>
-                낙동강이 'S'자 모양으로 마을을 감싸 안고 흐르는 지형에 위치하며, 풍산 류씨가 600여 년간 대대로 살아온 동성 마을입니다. 큰 기와집을 중심으로 초가집들이 원형을 이루며 배치되어 있으며, 하회별신굿탈놀이와 선유줄불놀이 등 전통 민속놀이가 전승되고 있습니다.
+                낙동강이 'S'자 모양으로 마을을 감싸 안고 흐르는 지형에 위치하며,
+                풍산 류씨가 600여 년간 대대로 살아온 동성 마을입니다. 큰
+                기와집을 중심으로 초가집들이 원형을 이루며 배치되어 있으며,
+                하회별신굿탈놀이와 선유줄불놀이 등 전통 민속놀이가 전승되고
+                있습니다.
               </p>
             </div>
             <div className="feature-card">
               <h3>양동마을 (경주)</h3>
               <p>
-                월성 손씨와 여강 이씨 두 명문가가 600여 년간 학문적 전통과 선비 정신을 이어온 동족 마을입니다. 산과 계곡을 따라 조성된 전형적인 양반 마을의 형태로, 종가나 큰 기와집은 높은 곳에, 초가집은 평지에 모여 있어 주어진 지형을 계급과 가문에 맞게 재구성한 모습을 보여줍니다.
+                월성 손씨와 여강 이씨 두 명문가가 600여 년간 학문적 전통과 선비
+                정신을 이어온 동족 마을입니다. 산과 계곡을 따라 조성된 전형적인
+                양반 마을의 형태로, 종가나 큰 기와집은 높은 곳에, 초가집은
+                평지에 모여 있어 주어진 지형을 계급과 가문에 맞게 재구성한
+                모습을 보여줍니다.
               </p>
             </div>
             <div className="feature-card">
               <h3>전통 건축</h3>
               <p>
-                기와집과 초가집이 어우러진 조선시대 건축양식과 마을 배치의 원형이 그대로 보존되어 있으며, 특히 양동마을은 한국의 씨족 마을 중 가장 오랜 역사를 지니고 있습니다.
+                기와집과 초가집이 어우러진 조선시대 건축양식과 마을 배치의
+                원형이 그대로 보존되어 있으며, 특히 양동마을은 한국의 씨족 마을
+                중 가장 오랜 역사를 지니고 있습니다.
               </p>
             </div>
             <div className="feature-card">
               <h3>무형문화</h3>
               <p>
-                하회별신굿탈놀이를 비롯하여 조선시대 유학자들의 고문헌, 예술 작품, 공동체 놀이, 세시풍속 등 주민들의 생활과 신앙에 관계된 무형유산이 세대를 이어 전승되고 있습니다.
+                하회별신굿탈놀이를 비롯하여 조선시대 유학자들의 고문헌, 예술
+                작품, 공동체 놀이, 세시풍속 등 주민들의 생활과 신앙에 관계된
+                무형유산이 세대를 이어 전승되고 있습니다.
               </p>
             </div>
           </div>
@@ -150,10 +168,26 @@ export default function HahoePage() {
           <h2>문화적 가치</h2>
           <div className="significance-content">
             {[
-              { icon: "home", title: "전통 마을 구조와 보존", text: "조선시대 양반 마을의 전형적인 구조와 배치를 완벽하게 보존하고 있으며, 한국의 씨족 마을 중 가장 오랜 역사를 지니고 있습니다." },
-              { icon: "groups", title: "살아있는 공동체 문화", text: "수백 년간 지속되어온 전통적인 마을 공동체 문화와 사회 구조를 보여주며, 주민들의 생활과 신앙에 관계된 무형유산이 세대를 이어 전승되고 있습니다." },
-              { icon: "landscape", title: "자연과의 조화로운 배치", text: "강과 산을 배경으로 한 자연환경과 조화로운 마을 배치가 돋보이며, 자연에 순응하며 조화를 이루는 한국인의 자연관을 보여줍니다." },
-              { icon: "theater_comedy", title: "유교적 양반 문화의 상징", text: "조선시대 전통적인 유교 문화가 살아 숨 쉬는 상징 공간이자 가장 한국적이고 독창적인 문화를 간직한 씨족 마을입니다." },
+              {
+                icon: "home",
+                title: "전통 마을 구조와 보존",
+                text: "조선시대 양반 마을의 전형적인 구조와 배치를 완벽하게 보존하고 있으며, 한국의 씨족 마을 중 가장 오랜 역사를 지니고 있습니다.",
+              },
+              {
+                icon: "groups",
+                title: "살아있는 공동체 문화",
+                text: "수백 년간 지속되어온 전통적인 마을 공동체 문화와 사회 구조를 보여주며, 주민들의 생활과 신앙에 관계된 무형유산이 세대를 이어 전승되고 있습니다.",
+              },
+              {
+                icon: "landscape",
+                title: "자연과의 조화로운 배치",
+                text: "강과 산을 배경으로 한 자연환경과 조화로운 마을 배치가 돋보이며, 자연에 순응하며 조화를 이루는 한국인의 자연관을 보여줍니다.",
+              },
+              {
+                icon: "theater_comedy",
+                title: "유교적 양반 문화의 상징",
+                text: "조선시대 전통적인 유교 문화가 살아 숨 쉬는 상징 공간이자 가장 한국적이고 독창적인 문화를 간직한 씨족 마을입니다.",
+              },
             ].map((item, index) => (
               <div key={index} className="significance-item">
                 <h3>
@@ -165,8 +199,6 @@ export default function HahoePage() {
             ))}
           </div>
         </section>
-
-        
 
         {/* 퀴즈 유도 버튼 */}
         {!showQuiz && (
@@ -226,7 +258,10 @@ export default function HahoePage() {
 
             {quizCompleted && (
               <div id="quiz-success" className="quiz-success">
-                <h3><span className="material-symbols-outlined">celebration</span> 축하합니다!</h3>
+                <h3>
+                  <span className="material-symbols-outlined">celebration</span>{" "}
+                  축하합니다!
+                </h3>
                 <p>모든 문제를 맞췄습니다. 다음 문화유산이 해금되었습니다!</p>
                 <button onClick={() => navigate("/")} className="return-button">
                   박물관으로 돌아가기
