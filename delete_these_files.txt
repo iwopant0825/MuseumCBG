@@ -1,0 +1,2 @@
+src/components/MuseumFixed.jsx
+src/AppFixed.jsx
