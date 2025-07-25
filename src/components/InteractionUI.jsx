@@ -22,8 +22,8 @@ export default function InteractionUI() {
       {/* 헤더 */}
       <div className="museum-header">
         <div className="museum-logo">
-          <span className="material-symbols-outlined">account_balance</span>
-          <h1>한국 문화유산 박물관</h1>
+          <span style={{ color: "white" }} className="material-symbols-outlined">account_balance</span>
+          <h1 style={{ color: "white" }}>한국 문화유산 박물관</h1>
         </div>
       </div>
 
@@ -72,13 +72,13 @@ export default function InteractionUI() {
       {/* 조작 안내 */}
       <div className="controls-panel">
         <div className="controls-header">
-          <span className="material-symbols-outlined">gamepad</span>
+          <span style={{ color: "white" }} className="material-symbols-outlined">gamepad</span>
           <h4>조작 가이드</h4>
         </div>
         <div className="controls-list">
           <div className="control-item">
             <div className="key-group">
-              <kbd>W</kbd>
+              <kbd style={{ backgroundColor: "rgba(0, 0, 0, 0.082)" }}>W</kbd>
               <kbd>A</kbd>
               <kbd>S</kbd>
               <kbd>D</kbd>

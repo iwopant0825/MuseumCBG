@@ -69,16 +69,16 @@ function MuseumScene() {
             near: 0.1,
             far: 1000,
           }}
-          style={{ background: "linear-gradient(to bottom, #87CEEB, #98FB98)" }}
+          style={{ background: "linear-gradient(to bottom, #ffffff, #ffffff)" }}
         >
           <Suspense fallback={null}>
             <PostProcessing />
 
             {/* 조명 */}
-            <ambientLight intensity={0.6} />
+            <ambientLight intensity={0.1} />
             <directionalLight
               position={[10, 20, 5]}
-              intensity={0.8}
+              intensity={0.1}
               castShadow
               shadow-mapSize-width={2048}
               shadow-mapSize-height={2048}

@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.082);
   backdrop-filter: blur(10px);
   padding: 16px 24px;
   border-radius: 8px;
@@ -50,7 +50,7 @@
   position: absolute;
   top: 32px;
   right: 32px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.082);
   backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 8px;
@@ -69,14 +69,14 @@
 
 .progress-header .material-symbols-outlined {
   font-size: 20px;
-  color: #2c2c2c;
+  color: #ffffff;
 }
 
 .progress-header h3 {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #ffffff;
 }
 
 .progress-stats {
@@ -90,7 +90,7 @@
 .progress-stats .current {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #ffffff;
 }
 
 .progress-stats .divider {
@@ -114,9 +114,9 @@
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #1a1a1a 0%, #2c2c2c 100%);
+  background: linear-gradient(90deg, #1a1a1a 0%, #00d9ff 100%);
   transition: width 0.3s ease;
-}
+}material-symbols-outlined
 
 /* 완료 패널 */
 .completion-panel {
@@ -203,7 +203,7 @@
   position: absolute;
   bottom: 32px;
   left: 32px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.082);
   backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 8px;
@@ -229,7 +229,7 @@
   margin: 0;
   font-size: 14px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #ffffff;
 }
 
 .controls-list {
